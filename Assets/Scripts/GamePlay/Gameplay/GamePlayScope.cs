@@ -1,18 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer.Unity;
 
-public class GamePlayScope : MonoBehaviour
+namespace MobaPrototype
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GamePlayScope : LifetimeScope
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

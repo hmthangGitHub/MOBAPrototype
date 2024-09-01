@@ -30,8 +30,6 @@ namespace MobaPrototype
             var handle = Addressables.LoadAssetAsync<TextAsset>(containerDataPath);
             try
             {
-                await UniTask.Delay(1000);
-                Debug.Log("Load something" + container.ToString());
                 await handle.ToUniTask(cancellationToken: token);
                 container.SetJsonData(handle.Result.text);
             }
