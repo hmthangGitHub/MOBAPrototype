@@ -1,0 +1,20 @@
+[
+    {
+        "config_skill_effect_key": "3000",
+        "#skill_name": "Star Fall",
+        "skill_effect_type": "Damage",
+        "config_skill_key": "2000"
+    },
+    {
+        "config_skill_effect_key": "3001",
+        "#skill_name": "Arrow",
+        "skill_effect_type": "Damage",
+        "config_skill_key": "2001"
+    },
+    {
+        "config_skill_effect_key": "3002",
+        "#skill_name": "Arrow",
+        "skill_effect_type": "Stun",
+        "config_skill_key": "2001"
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "config_skill_effect_level_key": "3000",
+        "#skill_name": "Star Fall",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3000",
+        "effect_value": "100",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3001",
+        "#skill_name": "Star Fall",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3000",
+        "effect_value": "200",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3002",
+        "#skill_name": "Star Fall",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3000",
+        "effect_value": "300",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3003",
+        "#skill_name": "Star Fall",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3000",
+        "effect_value": "400",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3004",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3001",
+        "effect_value": "2",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3005",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3001",
+        "effect_value": "3",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3006",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3001",
+        "effect_value": "4",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3007",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Damage",
+        "config_skill_effect_key": "3001",
+        "effect_value": "5",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3008",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Stun",
+        "config_skill_effect_key": "3002",
+        "effect_value": "6",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3009",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Stun",
+        "config_skill_effect_key": "3002",
+        "effect_value": "7",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3010",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Stun",
+        "config_skill_effect_key": "3002",
+        "effect_value": "8",
+        "effect_duration": "0"
+    },
+    {
+        "config_skill_effect_level_key": "3011",
+        "#skill_name": "Arrow",
+        "#skill_effect_type": "Stun",
+        "config_skill_effect_key": "3002",
+        "effect_value": "9",
+        "effect_duration": "0"
+    }
+]

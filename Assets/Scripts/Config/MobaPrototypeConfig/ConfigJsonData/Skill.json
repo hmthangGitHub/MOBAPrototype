@@ -1,0 +1,18 @@
+[
+    {
+        "config_skill_key": "2000",
+        "#hero_name": "UnderDog",
+        "config_hero_key": "1000",
+        "skill_name": "Star Fall",
+        "skill_cast_type": "NoneTarget",
+        "description": "Calls down celestial stars, dealing AoE damage to all enemies in a large radius"
+    },
+    {
+        "config_skill_key": "2001",
+        "#hero_name": "UnderDog",
+        "config_hero_key": "1000",
+        "skill_name": "Arrow",
+        "skill_cast_type": "Direction",
+        "description": "Fires a long-range, magical arrow in a straight line, stunning and damaging the first enemy it hits"
+    }
+]
