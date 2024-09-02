@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MobaPrototype.UIViewImplementation
 {
-    public class UIVIewInGameHUD : UIViewBase<UIVIewInGameHUD.UIModel>
+    public class UIViewInGameHUD : UIViewBase<UIViewInGameHUD.UIModel>
     {
         [Serializable]
         public class UIModel

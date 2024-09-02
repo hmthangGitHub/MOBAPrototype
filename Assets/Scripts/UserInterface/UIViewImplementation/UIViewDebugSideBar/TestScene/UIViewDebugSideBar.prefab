@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7750012977851353562}
   - component: {fileID: 469511017603121074}
+  - component: {fileID: 3301069353286964500}
   m_Layer: 5
-  m_Name: freeSpellBtn
+  m_Name: freeSpellToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,6 +87,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &3301069353286964500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828397259137511341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e48e9b9fbc3dbd4e8b5df3d5933f32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Toggle>k__BackingField: {fileID: 469511017603121074}
 --- !u!1 &998274604845172368
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +379,8 @@ GameObject:
   - component: {fileID: 4355203752418126722}
   - component: {fileID: 2443961154240973458}
   - component: {fileID: 2448856935189619054}
-  - component: {fileID: 1993329165400347693}
+  - component: {fileID: 8348142039035550607}
+  - component: {fileID: 8982100292654410392}
   m_Layer: 5
   m_Name: levelUpBtn
   m_TagString: Untagged
@@ -431,7 +446,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1993329165400347693
+--- !u!114 &8348142039035550607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -440,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2390684775281546395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: fde524c6a5db4424f996673e4202288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -475,6 +490,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8982100292654410392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390684775281546395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c17c611d9f37e74b9f7da1e9ddacb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Button>k__BackingField: {fileID: 8348142039035550607}
 --- !u!1 &3959475224786260871
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +520,8 @@ GameObject:
   - component: {fileID: 2071282458256035048}
   - component: {fileID: 5766758610363158923}
   - component: {fileID: 7289983746268108758}
-  - component: {fileID: 3703987461630781526}
+  - component: {fileID: 4335476194515378116}
+  - component: {fileID: 3514134187519632007}
   m_Layer: 5
   m_Name: resetCharacterMana&Cd
   m_TagString: Untagged
@@ -552,7 +587,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3703987461630781526
+--- !u!114 &4335476194515378116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -561,7 +596,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3959475224786260871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c17c611d9f37e74b9f7da1e9ddacb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Button>k__BackingField: {fileID: 3514134187519632007}
+--- !u!114 &3514134187519632007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959475224786260871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde524c6a5db4424f996673e4202288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -596,6 +644,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4321326292357754109
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +661,8 @@ GameObject:
   - component: {fileID: 6919100635707747671}
   - component: {fileID: 8966702075683149488}
   - component: {fileID: 8627150795584614597}
-  - component: {fileID: 6882006605999976029}
+  - component: {fileID: 2151101621486606513}
+  - component: {fileID: 1803826660647148328}
   m_Layer: 5
   m_Name: resetLevelBtn
   m_TagString: Untagged
@@ -673,7 +728,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6882006605999976029
+--- !u!114 &2151101621486606513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -682,7 +737,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4321326292357754109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c17c611d9f37e74b9f7da1e9ddacb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Button>k__BackingField: {fileID: 1803826660647148328}
+--- !u!114 &1803826660647148328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321326292357754109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde524c6a5db4424f996673e4202288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -715,6 +783,12 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8627150795584614597}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverExitEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4640406846403819891
@@ -1145,6 +1219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5869284548428876928}
+  - component: {fileID: 1987379013451239950}
   m_Layer: 5
   m_Name: UIViewDebugSideBar
   m_TagString: Untagged
@@ -1172,6 +1247,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1987379013451239950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689118260292430882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9fc2a1370dd644692e3aa8b03b8219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LevelUp>k__BackingField: {fileID: 8982100292654410392}
+  <LevelMax>k__BackingField: {fileID: 2815797950191774303}
+  <ResetLevel>k__BackingField: {fileID: 2151101621486606513}
+  <ResetManaAndCd>k__BackingField: {fileID: 4335476194515378116}
+  <FreeSpellToggle>k__BackingField: {fileID: 3301069353286964500}
 --- !u!1 &7962126993355380284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1275,8 @@ GameObject:
   - component: {fileID: 2092330155084786832}
   - component: {fileID: 2990441545716532039}
   - component: {fileID: 3478885872347289840}
-  - component: {fileID: 8304550746725719804}
+  - component: {fileID: 2815797950191774303}
+  - component: {fileID: 7979808604640887552}
   m_Layer: 5
   m_Name: levelMaxBtn
   m_TagString: Untagged
@@ -1249,7 +1342,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8304550746725719804
+--- !u!114 &2815797950191774303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1258,7 +1351,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7962126993355380284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c17c611d9f37e74b9f7da1e9ddacb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Button>k__BackingField: {fileID: 7979808604640887552}
+--- !u!114 &7979808604640887552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962126993355380284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde524c6a5db4424f996673e4202288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1291,6 +1397,12 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3478885872347289840}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverExitEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8205040909935036697
@@ -1333,8 +1445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 148.11926, y: 0}
-  m_SizeDelta: {x: 296.2385, y: 0}
+  m_AnchoredPosition: {x: 148.11926, y: 195.6529}
+  m_SizeDelta: {x: 296.2385, y: -391.3058}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7980625888548719926
 CanvasRenderer:
