@@ -20,6 +20,7 @@ namespace MobaPrototype
             builder.RegisterInstance(uiViewInGameHUD);
             builder.RegisterEntryPoint<UIViewDebugSideBarPresenter>();
             builder.RegisterEntryPoint<UIViewInGameHUDPresenter>();
+            builder.RegisterEntryPoint<PlayerSelectionPresenter>().AsSelf();
         }
     }
 }

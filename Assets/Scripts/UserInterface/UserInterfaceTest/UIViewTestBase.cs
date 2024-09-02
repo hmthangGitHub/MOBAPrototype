@@ -7,14 +7,14 @@ namespace UIView.Test
 {
     public class UIViewTestBase<TUIView, TUIModel> : MonoBehaviour where TUIView : UIViewBase<TUIModel>
     {
-        [SerializeField] private TUIView uiView;
-        [SerializeField] private TUIModel uiModel;
+        [SerializeField] protected TUIView uiView;
+        [SerializeField] protected TUIModel uiModel;
 
-        private void OnGUI()
+        protected virtual void OnGUI()
         {
             if (GUILayout.Button("Set model"))
             {
-                uiView.SetModel(uiModel);
+                OnSetTestModel();
             }
 
             if (GUILayout.Button("In"))
@@ -26,6 +26,11 @@ namespace UIView.Test
             {
                 uiView.Out();
             }
+        }
+
+        protected virtual void OnSetTestModel()
+        {
+            uiView.SetModel(uiModel);
         }
     }
 }

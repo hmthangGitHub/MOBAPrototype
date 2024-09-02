@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UIView
 {
     public abstract class UIViewBase<TModel> : MonoBehaviour
     {
-        protected TModel uiModel;
         protected CompositeDisposable disposables;
+        public TModel Model { get; private set; }
 
         public void SetModel(TModel uiModel)
         {
-            this.uiModel = uiModel;
+            Model = uiModel;
             if (disposables == default)
             {
                 disposables = new();

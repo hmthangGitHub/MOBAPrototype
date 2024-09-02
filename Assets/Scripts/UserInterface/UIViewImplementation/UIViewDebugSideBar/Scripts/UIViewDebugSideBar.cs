@@ -25,11 +25,11 @@ namespace MobaPrototype.UIViewImplementation
         
         protected override void OnSetModel(UIModel model)
         {
-            LevelUp.SetModel(uiModel.LevelUp);
-            LevelMax.SetModel(uiModel.LevelMax);
-            ResetLevel.SetModel(uiModel.ResetLevel);
-            ResetManaAndCd.SetModel(uiModel.ResetManaAndCd);
-            FreeSpellToggle.SetModel(uiModel.FreeSpellToggle);
+            LevelUp.SetModel(Model.LevelUp);
+            LevelMax.SetModel(Model.LevelMax);
+            ResetLevel.SetModel(Model.ResetLevel);
+            ResetManaAndCd.SetModel(Model.ResetManaAndCd);
+            FreeSpellToggle.SetModel(Model.FreeSpellToggle);
         }
     }
 }
