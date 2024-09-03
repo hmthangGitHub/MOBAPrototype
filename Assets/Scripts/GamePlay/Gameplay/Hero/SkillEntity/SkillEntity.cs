@@ -1,38 +1,55 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using MobaPrototype.Config;
 using MobaPrototype.Hero;
 using UniRx;
 using UnityEngine;
-using VContainer;
-using VContainer.Unity;
 
-namespace MobaPrototype.SkillEntity
+namespace MobaPrototype.Skills
 {
-    public class SkillEntity : LifetimeScope
+    public class SkillEntity : MonoBehaviour
     {
         [SerializeField] private Animator animator;
         [SerializeField] private SkillEntityTrigger skillEntityTrigger;
-        public IReadOnlyDictionary<SkillEffectType, SkillEffectModel> SkillEffectModels { get; set; }
+        [SerializeField] private GameObjectEventPool gameObjectEventPool;
+        [SerializeField] private Transform skillAoeContainer;
+        public SkillEffectModel[] SkillEffectModels { get; set; }
 
-        protected override void Configure(IContainerBuilder builder)
-        {
-            base.Configure(builder);
-            builder.RegisterInstance(skillEntityTrigger);
-            builder.RegisterEntryPoint<SkillEntityTriggerPresenter>();
-        }
-
-        private void OnEnable()
+        private void Start()
         {
             skillEntityTrigger.OnHitAttackAble.Subscribe(enemy =>
             {
+                foreach (var effect in SkillEffectModels)
+                {
+                    switch (effect.SkillEffectType)
+                    {
+                        case SkillEffectType.Damage:
+                            enemy.GetDamage(effect.EffectValue);
+                            break;
+                        case SkillEffectType.Slow:
+                            enemy.GetSlow(effect.EffectValue, effect.EffectDuration);
+                            break;
+                        case SkillEffectType.Stun:
+                            enemy.GetStunned(effect.EffectValue, effect.EffectDuration);
+                            break;
+                        case SkillEffectType.DamagePerSecond:
+                            enemy.GetDamagePerSecond(effect.EffectValue, effect.EffectDuration);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
             }).AddTo(this);
+        }
+
+        public void SetAoe(float value)
+        {
+            skillAoeContainer.localScale = Vector3.one * value / 100.0f;
         }
 
         public void OnSKillEntityEnd()
         {
-            Destroy(gameObject);
+            gameObjectEventPool.ReturnToPool();
         }
     }
 

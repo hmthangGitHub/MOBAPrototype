@@ -12,7 +12,7 @@ namespace MobaPrototype.Hero
         private readonly HeroCommand heroCommand;
         private readonly HeroEntityModel heroEntityModel;
         private readonly HeroAoeSkillExecutor heroAoeSkillExecutor;
-        
+
         private CompositeDisposable compositeDisposable = new();
         
         public HeroCommandExecutor(HeroCommand heroCommand, HeroEntityModel heroEntityModel, HeroAoeSkillExecutor heroAoeSkillExecutor)

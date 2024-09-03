@@ -1,14 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace MobaPrototype.SkillEntity
+namespace MobaPrototype.Skills
 {
     public class SkillEntityTrigger : MonoBehaviour
     {
-        private Subject<IGetAttackAble> _onHitAttackAble;
+        private Subject<IGetAttackAble> _onHitAttackAble = new();
         public IObservable<IGetAttackAble> OnHitAttackAble => _onHitAttackAble;
         
         private void OnTriggerEnter(Collider other)

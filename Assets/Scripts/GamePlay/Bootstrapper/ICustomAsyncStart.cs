@@ -7,4 +7,9 @@ namespace MobaPrototype
     {
         UniTask StartAsync(CancellationToken cancellation = default);
     }
+    
+    public interface ICustomPostAsyncStart
+    {
+        UniTask PostStartAsync(CancellationToken cancellation = default);
+    }
 }

@@ -18,6 +18,7 @@ namespace MobaPrototype.Scope
             builder.RegisterEntryPoint<ConfigInitializer>();
             builder.RegisterEntryPoint<CustomAsyncStartService>();
             builder.RegisterEntryPoint<GameSceneLoader>();
+            builder.RegisterEntryPoint<GameObjectPoolContainer>().AsSelf();
         }
 
         private void RegisterConfigs(IContainerBuilder builder)

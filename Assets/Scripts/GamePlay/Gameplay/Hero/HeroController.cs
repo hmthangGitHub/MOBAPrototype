@@ -41,6 +41,8 @@ namespace MobaPrototype.Hero
             var configHeroContainer = Parent.Container.Resolve<ConfigHeroContainer>();
             var configSkillContainer = Parent.Container.Resolve<ConfigSkillContainer>();
             var configSkillLevelContainer = Parent.Container.Resolve<ConfigSkillLevelContainer>();
+            var configSkillEffectContainer = Parent.Container.Resolve<ConfigSkillEffectContainer>();
+            var configSkillEffectLevelContainer = Parent.Container.Resolve<ConfigSkillEffectLevelContainer>();
             HeroEntityModel = new()
             {
                 Level = new(1),
@@ -52,7 +54,11 @@ namespace MobaPrototype.Hero
                     {
                         Level = new(0),
                         ConfigSkill = x,
-                        SkillCastType = new(x.SkillCastType)
+                        SkillCastType = new(x.SkillCastType),
+                        SkillEffectModels = configSkillEffectContainer.GroupConfigLookUp[x.ConfigSkillKey].ToDictionary(skillEffectConfig => skillEffectConfig.ConfigSkillEffectKey, skillEffectConfig => new SkillEffectModel()
+                        {
+                            SkillEffectType = skillEffectConfig.SkillEffectType,
+                        }).ToReactiveDictionary()
                     };
 
                     skillModel
@@ -65,6 +71,13 @@ namespace MobaPrototype.Hero
                             skillModel.CastRange.Value = configSkillAtLevel.CastRange;
                             skillModel.CoolDown.Value = configSkillAtLevel.CoolDown;
                             skillModel.ManaCost.Value = configSkillAtLevel.ManaCost;
+
+                            foreach (var skillEffectModel in skillModel.SkillEffectModels)
+                            {
+                                var configSkillEffectAtLevel = configSkillEffectLevelContainer.GroupConfigLookUp[skillEffectModel.Key].ElementAt(level - 1);
+                                skillEffectModel.Value.EffectValue = configSkillEffectAtLevel.EffectValue;
+                                skillEffectModel.Value.EffectDuration = configSkillEffectAtLevel.EffectDuration;
+                            }
                         }).AddTo(this);
                     return skillModel;
                 }).ToArray(),

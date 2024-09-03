@@ -23,6 +23,12 @@ namespace MobaPrototype.Config
 
             [JsonProperty("description")]
             public string Description { get; private set; }
+            
+            [JsonProperty("skill_prefab_path")]
+            public string SkillPrefabPath { get; private set; }
+            
+            [JsonProperty("skill_icon")]
+            public string SkillIcon { get; private set; }
         }
 
         protected override Func<Config, int> ConfigToKeyFactory => x => x.ConfigSkillKey;

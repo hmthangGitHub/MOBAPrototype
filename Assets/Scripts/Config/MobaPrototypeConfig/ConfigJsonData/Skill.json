@@ -5,6 +5,8 @@
         "config_hero_key": "1000",
         "skill_name": "Star Fall",
         "skill_cast_type": "NoneTarget",
+        "skill_icon": null,
+        "skill_prefab_path": "SkillPrefabs/Piercing Vine.prefab",
         "description": "Calls down celestial stars, dealing AoE damage to all enemies in a large radius"
     },
     {
@@ -13,6 +15,8 @@
         "config_hero_key": "1000",
         "skill_name": "Arrow",
         "skill_cast_type": "Direction",
+        "skill_icon": null,
+        "skill_prefab_path": null,
         "description": "Fires a long-range, magical arrow in a straight line, stunning and damaging the first enemy it hits"
     }
 ]

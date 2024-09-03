@@ -28,7 +28,7 @@ namespace MobaPrototype.Hero
         public ReactiveProperty<float> ManaCost { get; set; } = new();
         public ReactiveProperty<float> CoolDown { get; set; } = new();
         public ReactiveProperty<SkillCastType> SkillCastType { get; set; } = new();
-        public Dictionary<SkillEffectType, SkillEffectModel> SkillEffectModels { get; set; } = new();
+        public ReactiveDictionary<int, SkillEffectModel> SkillEffectModels { get; set; } = new();
     }
 
     public class SkillEffectModel

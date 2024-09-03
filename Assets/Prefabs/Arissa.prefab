@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 1510974081632168078}
   - component: {fileID: 4080191392270755239}
   - component: {fileID: 7262605119357623071}
-  - component: {fileID: 3078109061550362536}
   m_Layer: 0
   m_Name: Arissa
   m_TagString: Untagged
@@ -177,7 +176,7 @@ MonoBehaviour:
     TypeName: MobaPrototype.GamePlayScope
   autoRun: 1
   autoInjectGameObjects: []
-  characterAnimatorController: {fileID: 3078109061550362536}
+  characterAnimatorController: {fileID: 7917831168323470157}
   aoeSkillPreviewer: {fileID: 2164897357814628657}
   <HeroEntityModel>k__BackingField:
     <Level>k__BackingField:
@@ -185,19 +184,6 @@ MonoBehaviour:
     <TalentTree>k__BackingField:
       value: 1
   <ConfigHeroKey>k__BackingField: 1001
---- !u!114 &3078109061550362536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6040014858982559077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44c6287c1d8445aab7edd0e1eff14d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3891798283571878526}
 --- !u!1 &6384761413263112322
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +360,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d426ca61875a1d644af6d670e5fa76bb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7917831168323470157}
   m_SourcePrefab: {fileID: 100100000, guid: d426ca61875a1d644af6d670e5fa76bb, type: 3}
 --- !u!95 &3891798283571878526 stripped
 Animator:
@@ -388,3 +378,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7451456558523115503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7757887496864357054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d426ca61875a1d644af6d670e5fa76bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7451456558523115503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7917831168323470157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757887496864357054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44c6287c1d8445aab7edd0e1eff14d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3891798283571878526}
