@@ -28,6 +28,7 @@ namespace MobaPrototype.UIViewImplementation
         protected override void OnSetModel(UIModel model)
         {
             Button.SetModel(model.Button);
+            UpgradeButton.SetModel(model.UpgradeButton);
             SkillLevels.SetModel(model.SkillLevels);
             foreach (var skillLevel in model.SkillLevels)
             {

@@ -9,6 +9,7 @@ namespace MobaPrototype
     {
         private Camera mainCamera;
         public ReactiveProperty<HeroEntityModel> CurrentSelectHeroEntityModel { get; set; } = new(default);
+        public ReactiveProperty<HeroCommand> CurrentSelectHeroCommand { get; set; } = new(default);
 
         public void Initialize()
         {
@@ -23,6 +24,7 @@ namespace MobaPrototype
             if (Physics.Raycast(ray.origin, ray.direction, out var raycastHit) && raycastHit.collider.TryGetComponent<IHeroController>(out var heroController))
             {
                 CurrentSelectHeroEntityModel.Value = heroController.HeroEntityModel;
+                CurrentSelectHeroCommand.Value = heroController.HeroCommand;
             }
         }
     }

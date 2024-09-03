@@ -8,13 +8,16 @@ namespace MobaPrototype
 {
     public class UIViewDebugSideBarPresenter : IInitializable, IDisposable
     {
+        private readonly PlayerSelectionPresenter playerSelectionPresenter;
+        
         private UIViewDebugSideBar uiViewDebugSideBar;
         private CompositeDisposable disposables = new();
         private ReactiveProperty<bool> _freeSpellToggle = new (false);
 
-        public UIViewDebugSideBarPresenter(UIViewDebugSideBar uiViewDebugSideBar)
+        public UIViewDebugSideBarPresenter(UIViewDebugSideBar uiViewDebugSideBar, PlayerSelectionPresenter playerSelectionPresenter)
         {
             this.uiViewDebugSideBar = uiViewDebugSideBar;
+            this.playerSelectionPresenter = playerSelectionPresenter;
         }
 
         public void Initialize()
@@ -25,7 +28,8 @@ namespace MobaPrototype
                 {
                     OnClick = () =>
                     {
-                        Debug.Log("LevelUp");
+                        playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Level.Value++;
+                        playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillPointRemaining.Value++;
                     },
                 },
                 LevelMax = new()

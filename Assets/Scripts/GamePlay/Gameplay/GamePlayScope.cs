@@ -12,12 +12,14 @@ namespace MobaPrototype
     {
         [SerializeField] private UIViewDebugSideBar uiViewDebugSideBar;
         [SerializeField] private UIViewInGameHUD uiViewInGameHUD;
+        [SerializeField] private HotKeyConfiguration hotKeyConfiguration;
 
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
             builder.RegisterInstance(uiViewDebugSideBar);
             builder.RegisterInstance(uiViewInGameHUD);
+            builder.RegisterInstance(hotKeyConfiguration);
             builder.RegisterEntryPoint<UIViewDebugSideBarPresenter>();
             builder.RegisterEntryPoint<UIViewInGameHUDPresenter>();
             builder.RegisterEntryPoint<PlayerSelectionPresenter>().AsSelf();

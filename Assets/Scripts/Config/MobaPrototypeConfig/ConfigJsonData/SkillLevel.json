@@ -2,73 +2,81 @@
     {
         "config_skill_level_key": "3000",
         "#skill_name": "Star Fall",
-        "skill_config_key": "2000",
+        "config_skill_key": "2000",
         "mana_cost": "50",
         "cool_down": "10",
         "cast_range": "0",
-        "aoe": "100"
+        "aoe": "100",
+        "hero_requirement_level": "1"
     },
     {
         "config_skill_level_key": "3001",
         "#skill_name": "Star Fall",
-        "skill_config_key": "2000",
+        "config_skill_key": "2000",
         "mana_cost": "100",
         "cool_down": "8",
         "cast_range": "0",
-        "aoe": "200"
+        "aoe": "200",
+        "hero_requirement_level": "3"
     },
     {
         "config_skill_level_key": "3002",
         "#skill_name": "Star Fall",
-        "skill_config_key": "2000",
+        "config_skill_key": "2000",
         "mana_cost": "150",
         "cool_down": "5",
         "cast_range": "0",
-        "aoe": "300"
+        "aoe": "300",
+        "hero_requirement_level": "5"
     },
     {
         "config_skill_level_key": "3003",
         "#skill_name": "Star Fall",
-        "skill_config_key": "2000",
+        "config_skill_key": "2000",
         "mana_cost": "200",
         "cool_down": "4",
         "cast_range": "0",
-        "aoe": "400"
+        "aoe": "400",
+        "hero_requirement_level": "7"
     },
     {
         "config_skill_level_key": "3004",
         "#skill_name": "Arrow",
-        "skill_config_key": "2001",
+        "config_skill_key": "2001",
         "mana_cost": "30",
         "cool_down": "11",
         "cast_range": "500",
-        "aoe": "0"
+        "aoe": "0",
+        "hero_requirement_level": "1"
     },
     {
         "config_skill_level_key": "3005",
         "#skill_name": "Arrow",
-        "skill_config_key": "2001",
+        "config_skill_key": "2001",
         "mana_cost": "40",
         "cool_down": "5",
         "cast_range": "600",
-        "aoe": "0"
+        "aoe": "0",
+        "hero_requirement_level": "3"
     },
     {
         "config_skill_level_key": "3006",
         "#skill_name": "Arrow",
-        "skill_config_key": "2001",
+        "config_skill_key": "2001",
         "mana_cost": "50",
         "cool_down": "4",
         "cast_range": "700",
-        "aoe": "0"
+        "aoe": "0",
+        "hero_requirement_level": "5"
     },
     {
         "config_skill_level_key": "3007",
         "#skill_name": "Arrow",
-        "skill_config_key": "2001",
+        "config_skill_key": "2001",
         "mana_cost": "60",
         "cool_down": "3",
         "cast_range": "800",
-        "aoe": "0"
+        "aoe": "0",
+        "hero_requirement_level": "7"
     }
 ]

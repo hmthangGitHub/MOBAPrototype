@@ -13,8 +13,8 @@ namespace MobaPrototype.UIViewImplementation
         [Serializable]
         public class UIModel
         {
-            [field : SerializeField] public ReactiveProperty<bool> Upgraded { get; set; }
-            [field : SerializeField] public ReactiveProperty<bool> CanUpgrade { get; set; }
+            [field: SerializeField] public ReactiveProperty<bool> Upgraded { get; set; } = new();
+            [field: SerializeField] public ReactiveProperty<bool> CanUpgrade { get; set; } = new();
         }
 
         [SerializeField] private GameObject upgradedMark;

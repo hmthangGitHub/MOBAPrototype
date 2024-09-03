@@ -4,7 +4,7 @@ using Unity.Plastic.Newtonsoft.Json;
 
 namespace MobaPrototype.Config
 {
-    public class ConfigSkillEffectContainer : ConfigContainer<ConfigSkillEffectContainer.Config, int>
+    public class ConfigSkillEffectContainer : ConfigContainerGroup<ConfigSkillEffectContainer.Config, int, int>
     {
         [Serializable]
         public class Config
@@ -20,5 +20,6 @@ namespace MobaPrototype.Config
         }
 
         protected override Func<Config, int> ConfigToKeyFactory => x => x.ConfigSkillEffectKey;
+        protected override Func<Config, int> ConfigToGroupKeyFactory => x => x.ConfigSkillKey;
     }
 }
