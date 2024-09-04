@@ -14,23 +14,31 @@ namespace MobaPrototype.Dummy
         [SerializeField] private Transform[] wayPoints;
         [SerializeField] private NavMeshAgent navMeshAgent;
         [SerializeField] private TextMeshProUGUI damageText;
-        private Tween tween;
+        [SerializeField] private Animator animator;
+        [SerializeField] private GameObject stunnedEffect;
 
-        private int targetIndex = 0;
+        private readonly int getHitHash = Animator.StringToHash("GetHit");
+        private readonly int stunnedHash = Animator.StringToHash("Stunned");
+        private readonly int movingHash = Animator.StringToHash("Moving");
+        
+        private int targetWayPointIndex = 0;
+        private Tween tween;
+        private float speed;
 
         private void Start()
         {
-            navMeshAgent.destination = wayPoints[targetIndex].position;
+            speed = navMeshAgent.speed;
+            navMeshAgent.destination = wayPoints[targetWayPointIndex].position;
             damageText.gameObject.SetActive(false);
         }
 
         private void Update()
         {
-            if (Vector3.Distance(transform.position, wayPoints[targetIndex].position) <= 0.1f)
+            if (Vector3.Distance(transform.position, wayPoints[targetWayPointIndex].position) <= 0.1f)
             {
-                targetIndex++;
-                targetIndex %= wayPoints.Length;
-                navMeshAgent.destination = wayPoints[targetIndex].position;
+                targetWayPointIndex++;
+                targetWayPointIndex %= wayPoints.Length;
+                navMeshAgent.destination = wayPoints[targetWayPointIndex].position;
             }
         }
 
@@ -50,6 +58,8 @@ namespace MobaPrototype.Dummy
                 damageText.gameObject.SetActive(false);
                 damageTextTransform.anchoredPosition = new(damageTextTransform.anchoredPosition.x, currentY);
             });
+
+            animator.Play(getHitHash);
         }
 
         public void GetSlow(float effectValue, float duration)
@@ -68,8 +78,20 @@ namespace MobaPrototype.Dummy
         {
         }
 
-        public void GetStunned(float valueEffectValue, float valueEffectDuration)
+        public void GetStunned(float duration)
         {
+            navMeshAgent.speed = 0.0f;
+            stunnedEffect.SetActive(true);
+            animator.Play(stunnedHash);
+            Observable.Timer(TimeSpan.FromSeconds(duration))
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    stunnedEffect.SetActive(false);
+                    animator.Play(movingHash);
+                    navMeshAgent.speed = speed;
+                })
+                .AddTo(this);
         }
     }
 }

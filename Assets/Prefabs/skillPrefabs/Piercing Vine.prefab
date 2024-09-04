@@ -6282,6 +6282,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4385174897558201841}
+    - targetCorrespondingSourceObject: {fileID: 609558522865742626, guid: 83f9b8520b1e50c448f5a41a5504643d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1037523486534587275}
     - targetCorrespondingSourceObject: {fileID: 3149637869112232392, guid: 83f9b8520b1e50c448f5a41a5504643d,
         type: 3}
       insertIndex: -1
@@ -6344,10 +6348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c675e85f003077f49adb9f16a766203f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1506402835092000684}
   skillEntityTrigger: {fileID: 7191304478557503544}
   gameObjectEventPool: {fileID: 4385174897558201841}
-  skillAoeContainer: {fileID: 4826882737858114504}
 --- !u!114 &4385174897558201841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6360,6 +6362,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490b0662f80f94a4cb4ea804ebbd46da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1037523486534587275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524732162012496916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b427a767b09e4026b07b909d98ab3fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillEntity: {fileID: 8849259625010074079}
+  skillAoeContainer: {fileID: 4826882737858114504}
 --- !u!4 &4826882737858114504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7602279580090778878, guid: 83f9b8520b1e50c448f5a41a5504643d,

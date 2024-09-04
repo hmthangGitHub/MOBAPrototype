@@ -2,8 +2,9 @@ namespace MobaPrototype.Hero
 {
     public interface IHeroSkillExecutor
     {
-        void Execute(SkillCastingCommand skillCastingCommand);
-        void Preview(SkillPreviewCommand skillPreviewCommand);
-        public void ExitPreview(SkillPreviewExitCommand skillPreviewExitCommand);
+        void Execute(int skillIndex);
+        void Preview(int skillIndex);
+        void PreviewRange(int skillIndex);
+        public void ExitPreview();
     }
 }

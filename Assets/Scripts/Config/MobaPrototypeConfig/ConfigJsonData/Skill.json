@@ -3,8 +3,8 @@
         "config_skill_key": "2000",
         "#hero_name": "UnderDog",
         "config_hero_key": "1000",
-        "skill_name": "Star Fall",
-        "skill_cast_type": "NoneTarget",
+        "skill_name": "Piercing Vine",
+        "skill_cast_type": "Aoe",
         "skill_icon": null,
         "skill_prefab_path": "SkillPrefabs/Piercing Vine.prefab",
         "description": "Calls down celestial stars, dealing AoE damage to all enemies in a large radius"
@@ -16,7 +16,17 @@
         "skill_name": "Arrow",
         "skill_cast_type": "Direction",
         "skill_icon": null,
-        "skill_prefab_path": null,
+        "skill_prefab_path": "SkillPrefabs/Arrow.prefab",
         "description": "Fires a long-range, magical arrow in a straight line, stunning and damaging the first enemy it hits"
+    },
+    {
+        "config_skill_key": "2002",
+        "#hero_name": "UnderDog",
+        "config_hero_key": "1000",
+        "skill_name": "Ice Age",
+        "skill_cast_type": "Target",
+        "skill_icon": null,
+        "skill_prefab_path": null,
+        "description": "Encases the target in ancient frost, slowing their movement. The intense cold weakens the target, leaving them vulnerable to further attacks"
     }
 ]

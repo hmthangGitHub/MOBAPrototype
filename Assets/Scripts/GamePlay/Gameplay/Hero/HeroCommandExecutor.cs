@@ -12,47 +12,60 @@ namespace MobaPrototype.Hero
         private readonly HeroCommand heroCommand;
         private readonly HeroEntityModel heroEntityModel;
         private readonly HeroAoeSkillExecutor heroAoeSkillExecutor;
+        private readonly HeroDirectionalSkillExecutor heroDirectionalSkillExecutor;
+        private readonly HeroTargetSkillExecutor heroTargetSkillExecutor;
 
         private CompositeDisposable compositeDisposable = new();
-        
-        public HeroCommandExecutor(HeroCommand heroCommand, HeroEntityModel heroEntityModel, HeroAoeSkillExecutor heroAoeSkillExecutor)
+
+        public HeroCommandExecutor(HeroCommand heroCommand, HeroEntityModel heroEntityModel,
+            HeroAoeSkillExecutor heroAoeSkillExecutor, HeroDirectionalSkillExecutor heroDirectionalSkillExecutor,
+            HeroTargetSkillExecutor heroTargetSkillExecutor)
         {
             this.heroCommand = heroCommand;
             this.heroEntityModel = heroEntityModel;
             this.heroAoeSkillExecutor = heroAoeSkillExecutor;
+            this.heroDirectionalSkillExecutor = heroDirectionalSkillExecutor;
+            this.heroTargetSkillExecutor = heroTargetSkillExecutor;
         }
-        
+
         public void Initialize()
         {
             heroCommand.SkillCastingCommand.Subscribe(x =>
             {
-                var heroSkillExecutor = GetHeroAoeSkillExecutor(x.SkillIndex);
-                heroSkillExecutor.Execute(x);
+                var heroSkillExecutor = GetSkillExecutor(x.SkillIndex);
+                heroSkillExecutor.Execute(x.SkillIndex);
             }).AddTo(compositeDisposable);
-            
+
             heroCommand.SkillPreviewCommand.Subscribe(x =>
             {
-                var heroSkillExecutor = GetHeroAoeSkillExecutor(x.SkillIndex);
-                heroSkillExecutor.Preview(x);
+                var heroSkillExecutor = GetSkillExecutor(x.SkillIndex);
+                heroSkillExecutor.Preview(x.SkillIndex);
             }).AddTo(compositeDisposable);
-            
+
+            heroCommand.SkillPreviewRangeCommand.Subscribe(x =>
+            {
+                heroDirectionalSkillExecutor.ExitPreview();
+                heroAoeSkillExecutor.ExitPreview();
+                var heroSkillExecutor = GetSkillExecutor(x.SkillIndex);
+                heroSkillExecutor.PreviewRange(x.SkillIndex);
+            }).AddTo(compositeDisposable);
+
             heroCommand.SkillPreviewExitCommand.Subscribe(x =>
             {
-                var heroSkillExecutor = GetHeroAoeSkillExecutor(x.SkillIndex);
-                heroSkillExecutor.ExitPreview(x);
+                var heroSkillExecutor = GetSkillExecutor(x.SkillIndex);
+                heroSkillExecutor.ExitPreview();
             }).AddTo(compositeDisposable);
         }
 
-        private HeroAoeSkillExecutor GetHeroAoeSkillExecutor(int skillIndex)
+        private IHeroSkillExecutor GetSkillExecutor(int skillIndex)
         {
-            var heroSkillExecutor = heroEntityModel.SkillModels[skillIndex].SkillCastType.Value switch
+            return heroEntityModel.SkillModels[skillIndex].SkillCastType.Value switch
             {
-                SkillCastType.Direction => default,
-                SkillCastType.Target => default,
-                SkillCastType.NoneTarget => heroAoeSkillExecutor,
+                SkillCastType.Direction => heroDirectionalSkillExecutor,
+                SkillCastType.Aoe => heroAoeSkillExecutor,
+                SkillCastType.Target => heroTargetSkillExecutor,
                 _ => throw new ArgumentOutOfRangeException()
             };
-            return heroSkillExecutor;
         }
 
         public void Dispose()

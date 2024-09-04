@@ -7,15 +7,16 @@ namespace MobaPrototype.Dummy
 {
     public class BillBoardWorldSpaceCanvas : MonoBehaviour
     {
-        private Camera camera;
+        private Camera mainCamera;
+        
         private void Start()
         {
-            camera = Camera.main;
+            mainCamera = Camera.main;
         }
 
         void Update()
         {
-            this.transform.forward = camera.transform.forward;
+            this.transform.forward = mainCamera.transform.forward;
         }
     }
 }

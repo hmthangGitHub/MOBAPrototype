@@ -7,6 +7,7 @@ namespace MobaPrototype.Hero
     {
         public Subject<SkillCastingCommand> SkillCastingCommand { get; private set; } = new();
         public Subject<SkillPreviewCommand> SkillPreviewCommand { get; private set; } = new();
+        public Subject<SkillPreviewCommand> SkillPreviewRangeCommand { get; private set; } = new();
         public Subject<SkillPreviewExitCommand> SkillPreviewExitCommand { get; private set; } = new();
     }
 

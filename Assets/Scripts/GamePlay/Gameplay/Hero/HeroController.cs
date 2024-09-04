@@ -20,6 +20,7 @@ namespace MobaPrototype.Hero
     {
         [SerializeField] private CharacterAnimatorController characterAnimatorController;
         [SerializeField] private AOESkillPreviewer aoeSkillPreviewer;
+        [SerializeField] private RangeSkillPreviewer rangeSkillPreviewer;
         
         [field: SerializeField] public HeroEntityModel HeroEntityModel { get; set; }
         [field: SerializeField] public int ConfigHeroKey { get; private set; } = 0;
@@ -32,8 +33,11 @@ namespace MobaPrototype.Hero
             builder.RegisterInstance(HeroCommand);
             builder.RegisterInstance(characterAnimatorController);
             builder.RegisterInstance(aoeSkillPreviewer);
+            builder.RegisterInstance(rangeSkillPreviewer);
             builder.RegisterEntryPoint<HeroCommandExecutor>();
             builder.Register<HeroAoeSkillExecutor>(Lifetime.Singleton).AsSelf();
+            builder.Register<HeroDirectionalSkillExecutor>(Lifetime.Singleton).AsSelf();
+            builder.Register<HeroTargetSkillExecutor>(Lifetime.Singleton).AsSelf();
         }
 
         private void InitializeHeroEntityModel(IContainerBuilder builder)

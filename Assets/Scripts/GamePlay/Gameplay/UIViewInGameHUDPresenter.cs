@@ -49,18 +49,35 @@ namespace MobaPrototype
             {
                 Button = new UIViewButton.UIModel()
                 {
-                    OnHover = () => playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewCommand.OnNext(new ()
+                    OnHover = () =>
                     {
-                        SkillIndex = i
-                    }),
+                        playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewRangeCommand.OnNext(new()
+                        {
+                            SkillIndex = i
+                        });
+                    },
                     OnHoverExit = () => playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewExitCommand.OnNext(new ()
                     {
                         SkillIndex = i
                     }),
-                    OnClick = () => playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillCastingCommand.OnNext(new ()
+                    OnClick = () =>
                     {
-                        SkillIndex = i
-                    }),
+                        if (skillModel.SkillCastType.Value == SkillCastType.Direction)
+                        {
+                            playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewCommand.OnNext(new()
+                            {
+                                SkillIndex = i
+                            });
+                        }
+
+                        if (skillModel.SkillCastType.Value == SkillCastType.Aoe)
+                        {
+                            playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillCastingCommand.OnNext(new()
+                            {
+                                SkillIndex = i
+                            });
+                        }
+                    },
                 },
                 HotKey = hotKeyConfiguration.HotKeys[i],
                 SkillLevels = configSkillLevelContainer.GroupConfigLookUp[skillModel.ConfigSkill.ConfigSkillKey].Select((skillLevelConfig, index) =>

@@ -51,12 +51,12 @@ namespace MobaPrototype.Scope
 
                 foreach (var instance in list)
                 {
-                    pool.Value.Release(instance);
+                    instance.ReturnToPool();
                 }
             }
         }
 
-        private async Task InitializeGameObjectPoolsAsync(CancellationToken cancellation, string[] allSkillEntityPath)
+        private async UniTask InitializeGameObjectPoolsAsync(CancellationToken cancellation, string[] allSkillEntityPath)
         {
             foreach (var skillEntityPath in allSkillEntityPath)
             {

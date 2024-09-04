@@ -3,7 +3,9 @@ namespace MobaPrototype.Config
     public enum SkillCastType
     {
         Direction,
-        Target,
-        NoneTarget
+        TargetInstant,
+        Aoe,
+        TargetAoe,
+        Target
     }
 }
