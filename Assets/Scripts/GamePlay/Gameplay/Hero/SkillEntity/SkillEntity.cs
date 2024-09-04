@@ -16,29 +16,7 @@ namespace MobaPrototype.Skills
 
         private void Start()
         {
-            skillEntityTrigger.OnHitAttackAble.Subscribe(enemy =>
-            {
-                foreach (var effect in SkillEntityModel.SkillEffectModels)
-                {
-                    switch (effect.SkillEffectType)
-                    {
-                        case SkillEffectType.Damage:
-                            enemy.GetDamage(effect.EffectValue);
-                            break;
-                        case SkillEffectType.Slow:
-                            enemy.GetSlow(effect.EffectValue, effect.EffectDuration);
-                            break;
-                        case SkillEffectType.Stun:
-                            enemy.GetStunned(effect.EffectDuration);
-                            break;
-                        case SkillEffectType.DamagePerSecond:
-                            enemy.GetDamagePerSecond(effect.EffectValue, effect.EffectDuration);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                }
-            }).AddTo(this);
+            skillEntityTrigger.OnHitAttackAble.Subscribe(target => target.ApplySkillEffectToTarget(SkillEntityModel.SkillEffectModels)).AddTo(this);
         }
 
         public void OnSKillEntityEnd()

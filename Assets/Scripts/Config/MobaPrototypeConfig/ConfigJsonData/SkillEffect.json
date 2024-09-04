@@ -18,13 +18,13 @@
         "config_skill_key": "2001"
     },
     {
-        "config_skill_effect_key": "3001",
+        "config_skill_effect_key": "3003",
         "#skill_name": "Ice Age",
         "skill_effect_type": "Slow",
         "config_skill_key": "2002"
     },
     {
-        "config_skill_effect_key": "3002",
+        "config_skill_effect_key": "3004",
         "#skill_name": "Ice Age",
         "skill_effect_type": "DamagePerSecond",
         "config_skill_key": "2002"

@@ -62,7 +62,7 @@ namespace MobaPrototype
                     }),
                     OnClick = () =>
                     {
-                        if (skillModel.SkillCastType.Value == SkillCastType.Direction)
+                        if (skillModel.SkillCastType.Value == SkillCastType.Direction || skillModel.SkillCastType.Value == SkillCastType.Target)
                         {
                             playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewCommand.OnNext(new()
                             {

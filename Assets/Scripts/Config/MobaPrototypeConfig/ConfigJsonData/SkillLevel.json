@@ -1,6 +1,6 @@
 [
     {
-        "config_skill_level_key": "3000",
+        "config_skill_level_key": "4000",
         "#skill_name": "Piercing Vine",
         "config_skill_key": "2000",
         "mana_cost": "50",
@@ -10,7 +10,7 @@
         "hero_requirement_level": "1"
     },
     {
-        "config_skill_level_key": "3001",
+        "config_skill_level_key": "4001",
         "#skill_name": "Piercing Vine",
         "config_skill_key": "2000",
         "mana_cost": "100",
@@ -20,7 +20,7 @@
         "hero_requirement_level": "3"
     },
     {
-        "config_skill_level_key": "3002",
+        "config_skill_level_key": "4002",
         "#skill_name": "Piercing Vine",
         "config_skill_key": "2000",
         "mana_cost": "150",
@@ -30,7 +30,7 @@
         "hero_requirement_level": "5"
     },
     {
-        "config_skill_level_key": "3003",
+        "config_skill_level_key": "4003",
         "#skill_name": "Piercing Vine",
         "config_skill_key": "2000",
         "mana_cost": "200",
@@ -40,7 +40,7 @@
         "hero_requirement_level": "7"
     },
     {
-        "config_skill_level_key": "3004",
+        "config_skill_level_key": "4004",
         "#skill_name": "Arrow",
         "config_skill_key": "2001",
         "mana_cost": "30",
@@ -50,7 +50,7 @@
         "hero_requirement_level": "1"
     },
     {
-        "config_skill_level_key": "3005",
+        "config_skill_level_key": "4005",
         "#skill_name": "Arrow",
         "config_skill_key": "2001",
         "mana_cost": "40",
@@ -60,7 +60,7 @@
         "hero_requirement_level": "3"
     },
     {
-        "config_skill_level_key": "3006",
+        "config_skill_level_key": "4006",
         "#skill_name": "Arrow",
         "config_skill_key": "2001",
         "mana_cost": "50",
@@ -70,7 +70,7 @@
         "hero_requirement_level": "5"
     },
     {
-        "config_skill_level_key": "3007",
+        "config_skill_level_key": "4007",
         "#skill_name": "Arrow",
         "config_skill_key": "2001",
         "mana_cost": "60",
@@ -80,7 +80,7 @@
         "hero_requirement_level": "7"
     },
     {
-        "config_skill_level_key": "3004",
+        "config_skill_level_key": "4008",
         "#skill_name": "Ice Age",
         "config_skill_key": "2002",
         "mana_cost": "10",
@@ -90,7 +90,7 @@
         "hero_requirement_level": "1"
     },
     {
-        "config_skill_level_key": "3005",
+        "config_skill_level_key": "4009",
         "#skill_name": "Ice Age",
         "config_skill_key": "2002",
         "mana_cost": "20",
@@ -100,7 +100,7 @@
         "hero_requirement_level": "3"
     },
     {
-        "config_skill_level_key": "3006",
+        "config_skill_level_key": "4010",
         "#skill_name": "Ice Age",
         "config_skill_key": "2002",
         "mana_cost": "30",
@@ -110,7 +110,7 @@
         "hero_requirement_level": "5"
     },
     {
-        "config_skill_level_key": "3007",
+        "config_skill_level_key": "4011",
         "#skill_name": "Ice Age",
         "config_skill_key": "2002",
         "mana_cost": "40",

@@ -1,6 +1,6 @@
 [
     {
-        "config_skill_effect_level_key": "3000",
+        "config_skill_effect_level_key": "5000",
         "#skill_name": "Piercing Vine",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3000",
@@ -8,7 +8,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3001",
+        "config_skill_effect_level_key": "5001",
         "#skill_name": "Piercing Vine",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3000",
@@ -16,7 +16,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3002",
+        "config_skill_effect_level_key": "5002",
         "#skill_name": "Piercing Vine",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3000",
@@ -24,7 +24,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3003",
+        "config_skill_effect_level_key": "5003",
         "#skill_name": "Piercing Vine",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3000",
@@ -32,7 +32,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3004",
+        "config_skill_effect_level_key": "5004",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3001",
@@ -40,7 +40,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3005",
+        "config_skill_effect_level_key": "5005",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3001",
@@ -48,7 +48,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3006",
+        "config_skill_effect_level_key": "5006",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3001",
@@ -56,7 +56,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3007",
+        "config_skill_effect_level_key": "5007",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Damage",
         "config_skill_effect_key": "3001",
@@ -64,7 +64,7 @@
         "effect_duration": "0"
     },
     {
-        "config_skill_effect_level_key": "3008",
+        "config_skill_effect_level_key": "5008",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Stun",
         "config_skill_effect_key": "3002",
@@ -72,7 +72,7 @@
         "effect_duration": "2"
     },
     {
-        "config_skill_effect_level_key": "3009",
+        "config_skill_effect_level_key": "5009",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Stun",
         "config_skill_effect_key": "3002",
@@ -80,7 +80,7 @@
         "effect_duration": "3"
     },
     {
-        "config_skill_effect_level_key": "3010",
+        "config_skill_effect_level_key": "5010",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Stun",
         "config_skill_effect_key": "3002",
@@ -88,7 +88,7 @@
         "effect_duration": "4"
     },
     {
-        "config_skill_effect_level_key": "3011",
+        "config_skill_effect_level_key": "5011",
         "#skill_name": "Arrow",
         "#skill_effect_type": "Stun",
         "config_skill_effect_key": "3002",
@@ -96,66 +96,66 @@
         "effect_duration": "5"
     },
     {
-        "config_skill_effect_level_key": "3004",
+        "config_skill_effect_level_key": "5012",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "DamagePerSecond",
-        "config_skill_effect_key": "3002",
+        "config_skill_effect_key": "3004",
         "effect_value": "10",
         "effect_duration": "3"
     },
     {
-        "config_skill_effect_level_key": "3005",
+        "config_skill_effect_level_key": "5013",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "DamagePerSecond",
-        "config_skill_effect_key": "3002",
+        "config_skill_effect_key": "3004",
         "effect_value": "20",
         "effect_duration": "4"
     },
     {
-        "config_skill_effect_level_key": "3006",
+        "config_skill_effect_level_key": "5014",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "DamagePerSecond",
-        "config_skill_effect_key": "3002",
+        "config_skill_effect_key": "3004",
         "effect_value": "30",
         "effect_duration": "5"
     },
     {
-        "config_skill_effect_level_key": "3007",
+        "config_skill_effect_level_key": "5015",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "DamagePerSecond",
-        "config_skill_effect_key": "3002",
+        "config_skill_effect_key": "3004",
         "effect_value": "40",
         "effect_duration": "6"
     },
     {
-        "config_skill_effect_level_key": "3008",
+        "config_skill_effect_level_key": "5016",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "Slow",
-        "config_skill_effect_key": "3001",
+        "config_skill_effect_key": "3003",
         "effect_value": "0.2",
         "effect_duration": "2"
     },
     {
-        "config_skill_effect_level_key": "3009",
+        "config_skill_effect_level_key": "5017",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "Slow",
-        "config_skill_effect_key": "3001",
+        "config_skill_effect_key": "3003",
         "effect_value": "0.3",
         "effect_duration": "3"
     },
     {
-        "config_skill_effect_level_key": "3010",
+        "config_skill_effect_level_key": "5018",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "Slow",
-        "config_skill_effect_key": "3001",
+        "config_skill_effect_key": "3003",
         "effect_value": "0.4",
         "effect_duration": "4"
     },
     {
-        "config_skill_effect_level_key": "3011",
+        "config_skill_effect_level_key": "5019",
         "#skill_name": "Ice Age",
         "#skill_effect_type": "Slow",
-        "config_skill_effect_key": "3001",
+        "config_skill_effect_key": "3003",
         "effect_value": "0.5",
         "effect_duration": "5"
     }

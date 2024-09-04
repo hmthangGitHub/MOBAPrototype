@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 541951511606736835}
   - component: {fileID: 4422208065940244900}
   - component: {fileID: 8153108907764672658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8932185506445872754}
   - component: {fileID: 8560328456726864829}
   - component: {fileID: 2846622948621683745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,13 +226,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9128273764454918558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: stunnedEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9128273764454918558
 Transform:
   m_ObjectHideFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 7877945081267165794}
   - component: {fileID: 2795313017500728348}
   - component: {fileID: 4214364194991289247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,9 @@ MonoBehaviour:
   navMeshAgent: {fileID: 7877945081267165794}
   damageText: {fileID: 8153108907764672658}
   animator: {fileID: 3250316854562461489}
-  stunnedEffect: {fileID: 0}
+  stunnedEffect: {fileID: 3776757054488660359}
+  outLine: {fileID: 2100000, guid: cce71123aa0b3d84097b0c4623d942c9, type: 2}
+  meshRenderer: {fileID: 2846622948621683745}
 --- !u!195 &7877945081267165794
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -391,7 +393,7 @@ GameObject:
   - component: {fileID: 7434452244504114667}
   - component: {fileID: 5456191837702909430}
   - component: {fileID: 8995108048286340032}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5220,7 +5222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849210144029639927}
   - component: {fileID: 3250316854562461489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5277,7 +5279,7 @@ GameObject:
   - component: {fileID: 2554676437818594339}
   - component: {fileID: 4757932271925998521}
   - component: {fileID: 6212285598268732415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: worldSpaceCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

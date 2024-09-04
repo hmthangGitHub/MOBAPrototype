@@ -6,12 +6,12 @@ namespace MobaPrototype.Skills
 {
     public class SkillEntityTrigger : MonoBehaviour
     {
-        private Subject<IGetAttackAble> _onHitAttackAble = new();
-        public IObservable<IGetAttackAble> OnHitAttackAble => _onHitAttackAble;
+        private Subject<ITargetAble> _onHitAttackAble = new();
+        public IObservable<ITargetAble> OnHitAttackAble => _onHitAttackAble;
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<IGetAttackAble>(out var attackAble))
+            if (other.TryGetComponent<ITargetAble>(out var attackAble))
             {
                 _onHitAttackAble.OnNext(attackAble);
             }

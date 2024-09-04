@@ -2564,16 +2564,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 3776757054488660359, guid: 7bb922ee395beea44921ac3c6b6d84f1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6212218242469531797, guid: 7bb922ee395beea44921ac3c6b6d84f1,
-        type: 3}
-      propertyPath: stunnedEffect
-      value: 
-      objectReference: {fileID: 9111628511707096264}
     - target: {fileID: 6212218242469531797, guid: 7bb922ee395beea44921ac3c6b6d84f1,
         type: 3}
       propertyPath: wayPoints.Array.data[0]
@@ -2604,12 +2594,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bb922ee395beea44921ac3c6b6d84f1, type: 3}
---- !u!1 &9111628511707096264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3776757054488660359, guid: 7bb922ee395beea44921ac3c6b6d84f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 9111628511707096263}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

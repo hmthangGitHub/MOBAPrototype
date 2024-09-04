@@ -35,7 +35,7 @@ namespace MobaPrototype.Hero
         private void Update()
         {
             var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction * 1000.0f, out var rayCastHit))
+            if (Physics.Raycast(ray.origin, ray.direction * 1000.0f, out var rayCastHit, layerMask))
             {
                 positions[0] = transform.position;
                 var point = ray.origin + ray.direction * rayCastHit.distance;

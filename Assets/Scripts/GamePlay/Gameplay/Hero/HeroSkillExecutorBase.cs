@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
+using DG.Tweening;
 using MobaPrototype.Scope;
+using MobaPrototype.SkillEntity;
 using MobaPrototype.Skills;
 using UniRx;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -15,6 +18,7 @@ namespace MobaPrototype.Hero
         [Inject] protected CharacterAnimatorController characterAnimatorController;
         [Inject] protected AOESkillPreviewer aoeSkillPreviewer;
         [Inject] protected RangeSkillPreviewer rangeSkillPreviewer;
+        [Inject] protected TargetSkillPreviewer targetSkillPreviewer;
         [Inject] protected GameObjectPoolContainer gameObjectPoolContainer;
         
         protected IDisposable onSkillActivateDisposable;
@@ -33,6 +37,7 @@ namespace MobaPrototype.Hero
         {
             aoeSkillPreviewer.Enable = false;
             rangeSkillPreviewer.Enable = false;
+            targetSkillPreviewer.Enable = false;
         }
 
         protected virtual void OnExecute(SkillModel skillModel)
@@ -61,6 +66,15 @@ namespace MobaPrototype.Hero
 
         public virtual void Preview(int skillIndex)
         {
+        }
+
+        protected void RotateToTargetAndExecuteSkillIndex(int skillIndex, Vector3 targetDirection)
+        {
+            HeroController.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(targetDirection), 0.2f)
+                .OnComplete(() =>
+                {
+                    Execute(skillIndex);
+                });
         }
         
         public void Dispose()

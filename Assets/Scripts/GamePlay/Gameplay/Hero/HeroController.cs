@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using MobaPrototype.Config;
+using MobaPrototype.SkillEntity;
 using UniRx;
 using UnityEngine;
 using VContainer;
@@ -21,6 +22,7 @@ namespace MobaPrototype.Hero
         [SerializeField] private CharacterAnimatorController characterAnimatorController;
         [SerializeField] private AOESkillPreviewer aoeSkillPreviewer;
         [SerializeField] private RangeSkillPreviewer rangeSkillPreviewer;
+        [SerializeField] private TargetSkillPreviewer targetSkillPreviewer;
         
         [field: SerializeField] public HeroEntityModel HeroEntityModel { get; set; }
         [field: SerializeField] public int ConfigHeroKey { get; private set; } = 0;
@@ -34,6 +36,7 @@ namespace MobaPrototype.Hero
             builder.RegisterInstance(characterAnimatorController);
             builder.RegisterInstance(aoeSkillPreviewer);
             builder.RegisterInstance(rangeSkillPreviewer);
+            builder.RegisterInstance(targetSkillPreviewer);
             builder.RegisterEntryPoint<HeroCommandExecutor>();
             builder.Register<HeroAoeSkillExecutor>(Lifetime.Singleton).AsSelf();
             builder.Register<HeroDirectionalSkillExecutor>(Lifetime.Singleton).AsSelf();

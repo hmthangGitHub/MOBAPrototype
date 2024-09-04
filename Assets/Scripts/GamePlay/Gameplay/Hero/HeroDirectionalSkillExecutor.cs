@@ -7,11 +7,6 @@ using UnityEngine;
 
 namespace MobaPrototype.Hero
 {
-    public class HeroTargetSkillExecutor : HeroSkillExecutorBase
-    {
-        
-    }
-    
     public class HeroDirectionalSkillExecutor : HeroSkillExecutorBase
     {
         private IDisposable castingDirectionDisposable;
@@ -36,11 +31,7 @@ namespace MobaPrototype.Hero
                 .Subscribe(direction =>
                 {
                     ExitPreview();
-                    HeroController.transform.DOLocalRotateQuaternion(Quaternion.LookRotation(direction), 0.2f)
-                        .OnComplete(() =>
-                        {
-                            Execute(skillIndex);
-                        });
+                    RotateToTargetAndExecuteSkillIndex(skillIndex, direction);
                 }).AddTo(disposables);
         }
         

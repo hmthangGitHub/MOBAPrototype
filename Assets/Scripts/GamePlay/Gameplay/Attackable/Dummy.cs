@@ -1,6 +1,9 @@
 using System;
+using System.Linq;
 using Codice.Client.BaseCommands;
 using DG.Tweening;
+using MobaPrototype.Config;
+using MobaPrototype.Hero;
 using MobaPrototype.Skills;
 using TMPro;
 using UniRx;
@@ -9,13 +12,15 @@ using UnityEngine.AI;
 
 namespace MobaPrototype.Dummy
 {
-    public class Dummy : MonoBehaviour, IGetAttackAble
+    public class Dummy : MonoBehaviour, ITargetAble
     {
         [SerializeField] private Transform[] wayPoints;
         [SerializeField] private NavMeshAgent navMeshAgent;
         [SerializeField] private TextMeshProUGUI damageText;
         [SerializeField] private Animator animator;
         [SerializeField] private GameObject stunnedEffect;
+        [SerializeField] private Material outLine;
+        [SerializeField] private Renderer meshRenderer;
 
         private readonly int getHitHash = Animator.StringToHash("GetHit");
         private readonly int stunnedHash = Animator.StringToHash("Stunned");
@@ -25,11 +30,16 @@ namespace MobaPrototype.Dummy
         private Tween tween;
         private float speed;
 
+        private Material[] normalStateMaterials;
+        private Material[] highLightStateMaterials;
+
         private void Start()
         {
             speed = navMeshAgent.speed;
             navMeshAgent.destination = wayPoints[targetWayPointIndex].position;
             damageText.gameObject.SetActive(false);
+            normalStateMaterials = meshRenderer.materials;
+            highLightStateMaterials = meshRenderer.materials.Append(outLine).ToArray();
         }
 
         private void Update()
@@ -62,7 +72,7 @@ namespace MobaPrototype.Dummy
             animator.Play(getHitHash);
         }
 
-        public void GetSlow(float effectValue, float duration)
+        private void GetSlow(float effectValue, float duration)
         {
             navMeshAgent.speed *= effectValue;
             Observable.Timer(TimeSpan.FromSeconds(duration))
@@ -74,11 +84,11 @@ namespace MobaPrototype.Dummy
                 .AddTo(this);
         }
 
-        public void GetDamagePerSecond(float valueEffectValue, float valueEffectDuration)
+        private void GetDamagePerSecond(float valueEffectValue, float valueEffectDuration)
         {
         }
 
-        public void GetStunned(float duration)
+        private void GetStunned(float duration)
         {
             navMeshAgent.speed = 0.0f;
             stunnedEffect.SetActive(true);
@@ -92,6 +102,35 @@ namespace MobaPrototype.Dummy
                     navMeshAgent.speed = speed;
                 })
                 .AddTo(this);
+        }
+
+        public void HighLight(bool enable)
+        {
+            meshRenderer.materials = !enable ? normalStateMaterials : highLightStateMaterials;
+        }
+
+        public void ApplySkillEffectToTarget(SkillEffectModel[] skillEffectModels)
+        {
+            foreach (var effect in skillEffectModels)
+            {
+                switch (effect.SkillEffectType)
+                {
+                    case SkillEffectType.Damage:
+                        GetDamage(effect.EffectValue);
+                        break;
+                    case SkillEffectType.Slow:
+                        GetSlow(effect.EffectValue, effect.EffectDuration);
+                        break;
+                    case SkillEffectType.Stun:
+                        GetStunned(effect.EffectDuration);
+                        break;
+                    case SkillEffectType.DamagePerSecond:
+                        GetDamagePerSecond(effect.EffectValue, effect.EffectDuration);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
     }
 }

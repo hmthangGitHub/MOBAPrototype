@@ -16,10 +16,10 @@ namespace MobaPrototype.Config
             public int ConfigSkillEffectKey { get; private set; }
                 
             [JsonProperty("effect_value")]
-            public int EffectValue { get; private set; }
+            public float EffectValue { get; private set; }
 
             [JsonProperty("effect_duration")]
-            public int EffectDuration { get; private set; }
+            public float EffectDuration { get; private set; }
         }
 
         protected override Func<Config, int> ConfigToKeyFactory => x => x.ConfigSkillEffectLevelKey;
