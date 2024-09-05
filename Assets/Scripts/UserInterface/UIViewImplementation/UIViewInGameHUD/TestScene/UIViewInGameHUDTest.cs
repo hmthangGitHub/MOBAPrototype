@@ -33,5 +33,19 @@ namespace MobaPrototype.UIViewImplementation.Test
             uiModel.SkillLists = skills.ToReactiveCollection();
             base.OnSetTestModel();
         }
+
+        protected override void OnGUI()
+        {
+            base.OnGUI();
+            if (GUILayout.Button("Show lack mana notification"))
+            {
+                uiModel.ShowNoManaEvent.OnNext(default);
+            }
+            
+            if (GUILayout.Button("Show on cd notification"))
+            {
+                uiModel.ShowCoolDownEvent.OnNext(default);
+            }
+        }
     }
 }

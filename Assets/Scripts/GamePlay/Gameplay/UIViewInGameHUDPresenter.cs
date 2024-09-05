@@ -5,6 +5,7 @@ using MobaPrototype.Hero;
 using MobaPrototype.UIViewImplementation;
 using UIView;
 using UniRx;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace MobaPrototype
@@ -29,12 +30,22 @@ namespace MobaPrototype
 
         public void Initialize()
         {
-            uiViewInGameHUD.SetModel(new());
             playerSelectionPresenter.CurrentSelectHeroEntityModel.Subscribe(heroEntityModel =>
             {
                 if (heroEntityModel == default) return;
-                uiViewInGameHUD.Model.HeroName.Value = heroEntityModel.HeroConfig.HeroName;
+                uiViewInGameHUD.SetModel(new()
+                {
+                    HeroName = new(heroEntityModel.HeroConfig.HeroName),
+                    SkillLists = CreateSkillListUIViewModel().ToReactiveCollection(),
+                    Hp = heroEntityModel.Hp,
+                    Mana = heroEntityModel.Mana,
+                    HpRegen = heroEntityModel.HpRegen,
+                    ManaRegen = heroEntityModel.ManaRegen,
+                    MaxHp = heroEntityModel.MaxHp,
+                    MaxMana = heroEntityModel.MaxMana,
+                });
                 uiViewInGameHUD.Model.SkillLists.Clear();
+                
                 var skillListUIViewModel = CreateSkillListUIViewModel();
                 foreach (var skillUIModel in skillListUIViewModel)
                 {
@@ -45,7 +56,7 @@ namespace MobaPrototype
 
         private UIViewSkill.UIModel[] CreateSkillListUIViewModel()
         {
-            return playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillModels.Select((skillModel, i) => new UIViewSkill.UIModel()
+            return playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillModels.Select((skillModel, skillIndex) => new UIViewSkill.UIModel()
             {
                 Button = new UIViewButton.UIModel()
                 {
@@ -53,20 +64,22 @@ namespace MobaPrototype
                     {
                         playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewRangeCommand.OnNext(new()
                         {
-                            SkillIndex = i
+                            SkillIndex = skillIndex
                         });
                     },
                     OnHoverExit = () => playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewExitCommand.OnNext(new ()
                     {
-                        SkillIndex = i
+                        SkillIndex = skillIndex
                     }),
                     OnClick = () =>
                     {
+                        if (!ValidatedSkillUsage(skillIndex)) return;
+                        
                         if (skillModel.SkillCastType.Value == SkillCastType.Direction || skillModel.SkillCastType.Value == SkillCastType.Target)
                         {
                             playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillPreviewCommand.OnNext(new()
                             {
-                                SkillIndex = i
+                                SkillIndex = skillIndex
                             });
                         }
 
@@ -74,12 +87,12 @@ namespace MobaPrototype
                         {
                             playerSelectionPresenter.CurrentSelectHeroCommand.Value.SkillCastingCommand.OnNext(new()
                             {
-                                SkillIndex = i
+                                SkillIndex = skillIndex
                             });
                         }
                     },
                 },
-                HotKey = hotKeyConfiguration.HotKeys[i],
+                HotKey = hotKeyConfiguration.HotKeys[skillIndex],
                 SkillLevels = configSkillLevelContainer.GroupConfigLookUp[skillModel.ConfigSkill.ConfigSkillKey].Select((skillLevelConfig, index) =>
                 {
                     var canBeUpgrade = CanBeUpgrade(skillModel, index, skillLevelConfig);
@@ -110,7 +123,9 @@ namespace MobaPrototype
                     {
                         OnUpgradeSkillLevel(skillModel);
                     }
-                }
+                },
+                CoolDownTimeStamp = skillModel.CoolDownTimeStamp,
+                CoolDownTotalTime = skillModel.CoolDown
             }).ToArray();
 
             bool CanBeUpgrade(SkillModel skillModel, int index, ConfigSkillLevelContainer.Config skillLevelConfig)
@@ -124,6 +139,23 @@ namespace MobaPrototype
             {
                 return skillModel.Level.Value >= (index + 1);
             }
+        }
+
+        private bool ValidatedSkillUsage(int skillIndex)
+        {
+            if (playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillModels[skillIndex].Level.Value < 0) return false;
+            if (playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillModels[skillIndex].ManaCost.Value >
+                playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Mana.Value)
+            {
+                uiViewInGameHUD.Model.ShowNoManaEvent.OnNext(default);
+                return false;
+            }
+            if (playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillModels[skillIndex].CoolDownTimeStamp.Value > Time.time)
+            {
+                uiViewInGameHUD.Model.ShowCoolDownEvent.OnNext(default);
+                return false;
+            }
+            return true;
         }
 
         private void OnUpgradeSkillLevel(SkillModel skillModel)

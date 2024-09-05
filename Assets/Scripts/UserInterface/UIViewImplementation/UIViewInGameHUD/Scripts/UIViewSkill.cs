@@ -6,6 +6,7 @@ using TMPro;
 using UIView;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MobaPrototype.UIViewImplementation
 {
@@ -18,12 +19,16 @@ namespace MobaPrototype.UIViewImplementation
             [field: SerializeField] public ReactiveCollection<UIViewSkillLevel.UIModel> SkillLevels { get; set; }
             [field: SerializeField] public UIViewButton.UIModel UpgradeButton { get; set; }
             [field: SerializeField] public KeyCode HotKey { get; set; }
+            [field: SerializeField] public ReactiveProperty<float> CoolDownTimeStamp { get; set; }
+            [field: SerializeField] public ReactiveProperty<float> CoolDownTotalTime { get; set; }
         }
 
         [field: SerializeField] private UIViewButton Button { get; set; }
         [field: SerializeField] private TextMeshProUGUI HotKey { get; set; }
         [field: SerializeField] private UIViewButton UpgradeButton { get; set; }
         [field: SerializeField] private UIViewSkillLevelList SkillLevels { get; set; }
+        [field: SerializeField] private Image CoolDownClock { get; set; }
+        [field: SerializeField] private TextMeshProUGUI CoolDownText { get; set; }
         
         protected override void OnSetModel(UIModel model)
         {
@@ -42,7 +47,22 @@ namespace MobaPrototype.UIViewImplementation
 
         private void Update()
         {
-            if (Model != default && Input.GetKeyUp(Model.HotKey))
+            if (Model == default) return;
+            InvokeHotKeyClick();
+            ShowCoolDown();
+        }
+
+        private void ShowCoolDown()
+        {
+            var remainingCoolDownTime = Model.CoolDownTimeStamp.Value - Time.time;
+            CoolDownClock.gameObject.SetActive(remainingCoolDownTime > 0);
+            CoolDownClock.fillAmount = Mathf.Max(0.0f, remainingCoolDownTime / Model.CoolDownTotalTime.Value);
+            CoolDownText.text = Mathf.CeilToInt(remainingCoolDownTime).ToString();
+        }
+
+        private void InvokeHotKeyClick()
+        {
+            if (Input.GetKeyUp(Model.HotKey))
             {
                 Model.Button.OnClick.Invoke();
             }

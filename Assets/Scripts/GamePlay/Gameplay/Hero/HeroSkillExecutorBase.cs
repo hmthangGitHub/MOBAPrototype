@@ -28,7 +28,7 @@ namespace MobaPrototype.Hero
         protected bool ValidateSkillIndex(int index)
         {
             var skillModel = heroEntityModel.SkillModels[index];
-            return skillModel.Level.Value > 0 ;
+            return skillModel.Level.Value > 0;
         }
         
         protected virtual float GetPreviewRange(SkillModel skillModel) => 0.0f;
@@ -48,6 +48,11 @@ namespace MobaPrototype.Hero
         {
             if (!ValidateSkillIndex(skillIndex)) return;
             var skillModel = heroEntityModel.SkillModels[skillIndex];
+            if (skillModel.ManaCost.Value > heroEntityModel.Mana.Value || skillModel.CoolDownTimeStamp.Value > Time.time) return;
+            heroEntityModel.Mana.Value -= skillModel.ManaCost.Value;
+            heroEntityModel.Mana.Value = Mathf.Max(0, heroEntityModel.Mana.Value);
+            skillModel.CoolDownTimeStamp.Value = Time.time + skillModel.CoolDown.Value; 
+            
             characterAnimatorController.PlaySkillAnimation(skillIndex);
             onSkillActivateDisposable?.Dispose();
             onSkillActivateDisposable = characterAnimatorController.OnSkillActivate.Take(1).Subscribe(_ =>

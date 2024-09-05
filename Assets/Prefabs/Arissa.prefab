@@ -280,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5766608643723675088
 Transform:
   m_ObjectHideFlags: 0
@@ -508,11 +508,6 @@ MonoBehaviour:
   aoeSkillPreviewer: {fileID: 2164897357814628657}
   rangeSkillPreviewer: {fileID: 8758399373081847715}
   targetSkillPreviewer: {fileID: 416474485782370309}
-  <HeroEntityModel>k__BackingField:
-    <Level>k__BackingField:
-      value: 1
-    <TalentTree>k__BackingField:
-      value: 1
   <ConfigHeroKey>k__BackingField: 1001
 --- !u!1001 &7451456558523115503
 PrefabInstance:
