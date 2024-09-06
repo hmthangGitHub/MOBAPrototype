@@ -9,7 +9,7 @@ namespace UIView
     public abstract class UIViewBase<TModel> : MonoBehaviour
     {
         protected CompositeDisposable disposables;
-        public TModel Model { get; private set; }
+        public TModel Model { get; protected set; }
 
         public void SetModel(TModel uiModel)
         {

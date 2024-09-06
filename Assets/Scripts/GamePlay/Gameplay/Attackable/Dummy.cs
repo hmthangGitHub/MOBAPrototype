@@ -32,6 +32,7 @@ namespace MobaPrototype.Dummy
 
         private Material[] normalStateMaterials;
         private Material[] highLightStateMaterials;
+        private IDisposable stunnedDisposable;
 
         private void Start()
         {
@@ -52,7 +53,7 @@ namespace MobaPrototype.Dummy
             }
         }
 
-        public void GetDamage(float valueEffectValue)
+        private void GetDamage(float valueEffectValue, bool playGetHitAnimation = true)
         {
             tween?.Kill(true);
             
@@ -69,23 +70,35 @@ namespace MobaPrototype.Dummy
                 damageTextTransform.anchoredPosition = new(damageTextTransform.anchoredPosition.x, currentY);
             });
 
-            animator.Play(getHitHash);
+            if (playGetHitAnimation)
+            {
+                animator.Play(getHitHash);
+            }
         }
 
         private void GetSlow(float effectValue, float duration)
         {
             navMeshAgent.speed *= effectValue;
+            animator.speed *= effectValue;
             Observable.Timer(TimeSpan.FromSeconds(duration))
                 .Take(1)
                 .Subscribe(_ =>
                 {
                     navMeshAgent.speed /= effectValue;
+                    animator.speed /= effectValue;
                 })
                 .AddTo(this);
         }
 
         private void GetDamagePerSecond(float valueEffectValue, float valueEffectDuration)
         {
+            var damageInterval = Observable.Interval(TimeSpan.FromSeconds(0.5f))
+                .Subscribe(_ => GetDamage(valueEffectValue * 0.5f, false))
+                .AddTo(this);
+            
+            Observable.Timer(TimeSpan.FromSeconds(valueEffectDuration))
+                .Subscribe(_ => damageInterval.Dispose())
+                .AddTo(this);
         }
 
         private void GetStunned(float duration)
@@ -93,7 +106,8 @@ namespace MobaPrototype.Dummy
             navMeshAgent.speed = 0.0f;
             stunnedEffect.SetActive(true);
             animator.Play(stunnedHash);
-            Observable.Timer(TimeSpan.FromSeconds(duration))
+            stunnedDisposable?.Dispose();
+            stunnedDisposable = Observable.Timer(TimeSpan.FromSeconds(duration))
                 .Take(1)
                 .Subscribe(_ =>
                 {
@@ -116,16 +130,16 @@ namespace MobaPrototype.Dummy
                 switch (effect.SkillEffectType)
                 {
                     case SkillEffectType.Damage:
-                        GetDamage(effect.EffectValue);
+                        GetDamage(effect.EffectValue.Value);
                         break;
                     case SkillEffectType.Slow:
-                        GetSlow(effect.EffectValue, effect.EffectDuration);
+                        GetSlow(effect.EffectValue.Value, effect.EffectDuration.Value);
                         break;
                     case SkillEffectType.Stun:
-                        GetStunned(effect.EffectDuration);
+                        GetStunned(effect.EffectDuration.Value);
                         break;
                     case SkillEffectType.DamagePerSecond:
-                        GetDamagePerSecond(effect.EffectValue, effect.EffectDuration);
+                        GetDamagePerSecond(effect.EffectValue.Value, effect.EffectDuration.Value);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

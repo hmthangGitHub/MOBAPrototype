@@ -28,6 +28,8 @@ namespace MobaPrototype
                 {
                     OnClick = () =>
                     {
+                        if(playerSelectionPresenter.CurrentSelectHeroEntityModel.Value == default) return;
+                        if (playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Level.Value >= 25) return;
                         playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Level.Value++;
                         playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillPointRemaining.Value++;
                     },
@@ -36,17 +38,18 @@ namespace MobaPrototype
                 {
                     OnClick = () =>
                     {
-                        Debug.Log("LevelMax");
+                        if(playerSelectionPresenter.CurrentSelectHeroEntityModel.Value == default) return;
+                        playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.SkillPointRemaining.Value += 25 - playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Level.Value;
+                        playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Level.Value = 25;
                     },
                 },
-                ResetLevel = new()
+                ResetManaAndCd = new()
                 {
                     OnClick = () =>
                     {
-                        Debug.Log("ResetLevel");
-                    },
-                },
-                FreeSpellToggle = _freeSpellToggle,
+                        playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.Mana.Value = playerSelectionPresenter.CurrentSelectHeroEntityModel.Value.MaxMana.Value;
+                    }
+                }
             });
 
             _freeSpellToggle.Subscribe(val => { }).AddTo(disposables);

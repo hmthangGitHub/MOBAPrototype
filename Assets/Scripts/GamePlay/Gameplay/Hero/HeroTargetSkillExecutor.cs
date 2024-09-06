@@ -14,6 +14,7 @@ namespace MobaPrototype.Hero
         
         public override void Preview(int skillIndex)
         {
+            base.Preview(skillIndex);
             if (!ValidateSkillIndex(skillIndex)) return;
             var skillModel = heroEntityModel.SkillModels[skillIndex];
             targetSkillPreviewer.Enable = true;

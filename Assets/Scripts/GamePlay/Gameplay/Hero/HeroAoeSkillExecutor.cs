@@ -13,13 +13,13 @@ namespace MobaPrototype.Hero
         protected override void OnExecute(SkillModel skillModel)
         {
             base.OnExecute(skillModel);
-            var skillEntity = gameObjectPoolContainer.GetObject<AoeSkillEntity>(skillModel.ConfigSkill.SkillPrefabPath);
+            var skillEntity = gameObjectPoolContainer.GetObject<AoeSkillEntity>(skillModel.SkillEntityPath);
             skillEntity.SetModel(new ()
             {
                 Aoe = skillModel.Aoe.Value,
                 SkillEntityModel = new SkillEntityModel()
                 {
-                    SkillEffectModels = skillModel.SkillEffectModels.Values.ToArray()
+                    SkillEffectModels = skillModel.AllSkillEffectModels
                 },
                 Position = HeroController.transform.position
             });

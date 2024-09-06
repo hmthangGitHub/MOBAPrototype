@@ -1,0 +1,74 @@
+[
+    {
+        "config_talent_tree_key": "6000",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Heroic",
+        "config_hero_key": "1000",
+        "description": "Add 100 Max HP",
+        "hero_requirement_level": "10",
+        "hero_requirement_level_2": "27"
+    },
+    {
+        "config_talent_tree_key": "6001",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Mage",
+        "config_hero_key": "1000",
+        "description": "Add 100 Max Mana",
+        "hero_requirement_level": "10",
+        "hero_requirement_level_2": "27"
+    },
+    {
+        "config_talent_tree_key": "6002",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Fast Hand",
+        "config_hero_key": "1000",
+        "description": "Reduces the cooldown of<color=#4D74D4> Ice Age </color>by 20% and its mana cost by 10%",
+        "hero_requirement_level": "15",
+        "hero_requirement_level_2": "28"
+    },
+    {
+        "config_talent_tree_key": "6003",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Great Mage",
+        "config_hero_key": "1000",
+        "description": "Increases the damage and duration of<color=#4D74D4> Ice Age </color>by 20%, and triples its total duration",
+        "hero_requirement_level": "15",
+        "hero_requirement_level_2": "28"
+    },
+    {
+        "config_talent_tree_key": "6004",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "The Hunter",
+        "config_hero_key": "1000",
+        "description": "Add 2<color=#4D74D4> Arrow </color>Projectiles",
+        "hero_requirement_level": "20",
+        "hero_requirement_level_2": "29"
+    },
+    {
+        "config_talent_tree_key": "6005",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Ice Age",
+        "config_hero_key": "1000",
+        "description": "Increase <color=#4D74D4> Ice Age </color> damage by 100%",
+        "hero_requirement_level": "20",
+        "hero_requirement_level_2": "29"
+    },
+    {
+        "config_talent_tree_key": "6006",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Hell throne",
+        "config_hero_key": "1000",
+        "description": "Make<color=#4D74D4> Piercing Vine </color>bigger and stun enemy",
+        "hero_requirement_level": "25",
+        "hero_requirement_level_2": "30"
+    },
+    {
+        "config_talent_tree_key": "6007",
+        "#hero_name": "UnderDog",
+        "talent_tree_name": "Bear Trap",
+        "config_hero_key": "1000",
+        "description": "<color=#4D74D4> Piercing Vine </color>slow enemy and stay longer",
+        "hero_requirement_level": "25",
+        "hero_requirement_level_2": "30"
+    }
+]

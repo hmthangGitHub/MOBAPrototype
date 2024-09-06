@@ -534,6 +534,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4531544483925725877}
+  - component: {fileID: 3767713713718261808}
+  - component: {fileID: 4388810071067844376}
   m_Layer: 0
   m_Name: vineContainer
   m_TagString: Untagged
@@ -614,6 +616,39 @@ Transform:
   - {fileID: 2060646842489508253}
   m_Father: {fileID: 6655426337032202883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3767713713718261808
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661206647941682948}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4388810071067844376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661206647941682948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061fbae6edf94964f8305c080d61ab32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680505397524519511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6262,7 +6297,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5679172631779400192, guid: 83f9b8520b1e50c448f5a41a5504643d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8584109674598391221, guid: 83f9b8520b1e50c448f5a41a5504643d,
@@ -6286,29 +6322,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1037523486534587275}
-    - targetCorrespondingSourceObject: {fileID: 3149637869112232392, guid: 83f9b8520b1e50c448f5a41a5504643d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7191304478557503544}
   m_SourcePrefab: {fileID: 100100000, guid: 83f9b8520b1e50c448f5a41a5504643d, type: 3}
---- !u!1 &56842883842883326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3149637869112232392, guid: 83f9b8520b1e50c448f5a41a5504643d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3133433013698508598}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7191304478557503544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56842883842883326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061fbae6edf94964f8305c080d61ab32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2524732162012496916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 609558522865742626, guid: 83f9b8520b1e50c448f5a41a5504643d,
@@ -6348,7 +6362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c675e85f003077f49adb9f16a766203f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillEntityTrigger: {fileID: 7191304478557503544}
+  skillEntityTrigger: {fileID: 4388810071067844376}
   gameObjectEventPool: {fileID: 4385174897558201841}
 --- !u!114 &4385174897558201841
 MonoBehaviour:

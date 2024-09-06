@@ -15,4 +15,9 @@ namespace MobaPrototype.Config
 
         protected override Func<Config, int> ConfigToKeyFactory => x => x.ConfigHeroKey;
     }
+    
+    namespace MobaPrototype.Config
+    {
+    }
+
 }

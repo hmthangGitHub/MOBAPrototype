@@ -23,6 +23,8 @@ namespace MobaPrototype.Hero
         
         protected IDisposable onSkillActivateDisposable;
         protected CompositeDisposable disposables = new();
+        private bool isExecutingSpell;
+        
         protected HeroController HeroController => (HeroController)scope;
 
         protected bool ValidateSkillIndex(int index)
@@ -35,6 +37,7 @@ namespace MobaPrototype.Hero
 
         public void ExitPreview()
         {
+            if (isExecutingSpell) return;
             aoeSkillPreviewer.Enable = false;
             rangeSkillPreviewer.Enable = false;
             targetSkillPreviewer.Enable = false;
@@ -47,6 +50,9 @@ namespace MobaPrototype.Hero
         public void Execute(int skillIndex)
         {
             if (!ValidateSkillIndex(skillIndex)) return;
+            isExecutingSpell = false;
+            ExitPreview();
+            
             var skillModel = heroEntityModel.SkillModels[skillIndex];
             if (skillModel.ManaCost.Value > heroEntityModel.Mana.Value || skillModel.CoolDownTimeStamp.Value > Time.time) return;
             heroEntityModel.Mana.Value -= skillModel.ManaCost.Value;
@@ -71,6 +77,7 @@ namespace MobaPrototype.Hero
 
         public virtual void Preview(int skillIndex)
         {
+            isExecutingSpell = true;
         }
 
         protected void RotateToTargetAndExecuteSkillIndex(int skillIndex, Vector3 targetDirection)

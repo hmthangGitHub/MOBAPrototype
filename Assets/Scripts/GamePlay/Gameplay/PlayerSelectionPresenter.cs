@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using MobaPrototype.Hero;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using VContainer.Unity;
 
 namespace MobaPrototype
@@ -19,6 +21,7 @@ namespace MobaPrototype
         public void Tick()
         {
             if (!Input.GetMouseButtonUp(0)) return;
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             
             var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out var raycastHit) && raycastHit.collider.TryGetComponent<IHeroController>(out var heroController))

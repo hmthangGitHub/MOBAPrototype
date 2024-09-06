@@ -58,9 +58,10 @@ namespace UIView
 
         private void OnReset()
         {
-            transform.Cast<Transform>().Where(x => x != template.transform)
-                .ToList()
-                .ForEach(x => Destroy(x.gameObject));
+            foreach (var instance in instanceList)
+            {
+                Destroy(instance.gameObject);
+            }
 
             instanceList.Clear();
         }

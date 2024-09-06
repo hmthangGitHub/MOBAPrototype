@@ -19,7 +19,18 @@ namespace MobaPrototype.SkillEntity
         private Camera mainCamera;
         private Vector3[] positions = new[] {Vector3.zero, Vector3.zero};
     
-        public bool Enable { set => gameObject.SetActive(value); }
+        public bool Enable
+        {
+            set
+            {
+                gameObject.SetActive(value);
+                if (!value)
+                {
+                    UpdateCastingTarget((ITargetAble)default);
+                }
+            }
+        }
+
         public IObservable<(ITargetAble target, Vector3 direction)> OnCastingSkillToTarget => _onCastingSkillToTarget;
         
         private void Start()

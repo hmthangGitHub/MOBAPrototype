@@ -24,7 +24,5 @@ namespace MobaPrototype.Hero
     public class SkillCastingCommand
     {
         public int SkillIndex { get; set; }
-        public Vector3 SkillDirectionTarget { get; set; }
-        public int SkillTarget { get; set; }
     }
 }

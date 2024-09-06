@@ -23,8 +23,14 @@ namespace MobaPrototype.UIViewImplementation
             [field: SerializeField] public ReactiveProperty<float> Mana { get; set; } = new();
             [field: SerializeField] public ReactiveProperty<float> MaxMana { get; set; } = new();
             [field: SerializeField] public ReactiveProperty<float> ManaRegen { get; set; } = new();
+            [field: SerializeField] public ReactiveProperty<int> Level { get; set; } = new();
             [field: SerializeField] public Subject<Unit> ShowNoManaEvent { get; set; } = new();
             [field: SerializeField] public Subject<Unit> ShowCoolDownEvent { get; set; } = new();
+            [field: SerializeField] public UIViewTalentTreeLevel.UIModel[] TalentTreeLevels { get; set; } = Array.Empty<UIViewTalentTreeLevel.UIModel>();
+            [field: SerializeField] public UIViewButton.UIModel TalentTreeButton { get; set; } = new();
+            [field: SerializeField] public Subject<ReactiveCollection<UIViewTalentTreePopUpContent.UIModel>> ShowTalentTreeContentEvent { get; set; } = new();
+            [field: SerializeField] public Subject<UIViewSkillInfoPopUp.UIModel> ShowUIViewSkillInfoPopUpEvent { get; set; } = new();
+            [field: SerializeField] public Subject<Unit> CloseSkillInfoPopUp { get; set; } = new();
         }
 
         [field: SerializeField] public UIViewSkillList SkillLists { get; set; }
@@ -33,10 +39,16 @@ namespace MobaPrototype.UIViewImplementation
         [field: SerializeField] public TextMeshProUGUI HpRegen { get; private set; }
         [field: SerializeField] public TextMeshProUGUI Mana { get; private set; }
         [field: SerializeField] public TextMeshProUGUI ManaRegen { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI Level { get; private set; }
         [field: SerializeField] public Image HpBar { get; private set; }
         [field: SerializeField] public Image ManaBar { get; private set; }
-        [field: SerializeField] public RectTransform noManaNotification { get; private set; }
-        [field: SerializeField] public RectTransform coolDownNotification { get; private set; }
+        [field: SerializeField] public RectTransform NoManaNotification { get; private set; }
+        [field: SerializeField] public RectTransform CoolDownNotification { get; private set; }
+        [field: SerializeField] public UIViewTalentTreeLevel[] TalentTreeLevels { get; set; }
+        [field: SerializeField] public UIViewButton TalentTreeButton { get; set; }
+        [field: SerializeField] public UIViewTalentTreePopUp UIViewTalentTreePopUp { get; set; }
+        [field: SerializeField] public UIViewSkillInfoPopUp UIViewSkillInfoPopUp { get; set; }
+        
 
         private Tween noManaTween;
         private Tween coolDownTween;
@@ -51,14 +63,38 @@ namespace MobaPrototype.UIViewImplementation
             model.Mana.Subscribe(_ => { UpdateMana(); }).AddTo(disposables);
             model.HpRegen.Subscribe(_ => HpRegen.text = $"+{model.HpRegen}").AddTo(disposables);
             model.ManaRegen.Subscribe(_ => ManaRegen.text = $"+{model.ManaRegen}").AddTo(disposables);
+            model.Level.Subscribe(_ => Level.text = $"{model.Level}").AddTo(disposables);
             model.ShowNoManaEvent.Subscribe(_ =>
             {
-                PlayTweenNotificationAnimation(ref noManaTween, noManaNotification);
+                PlayTweenNotificationAnimation(ref noManaTween, NoManaNotification);
             }).AddTo(disposables);
             
             model.ShowCoolDownEvent.Subscribe(_ =>
             {
-                PlayTweenNotificationAnimation(ref coolDownTween, coolDownNotification);
+                PlayTweenNotificationAnimation(ref coolDownTween, CoolDownNotification);
+            }).AddTo(disposables);
+
+            for (var index = 0; index < model.TalentTreeLevels.Length; index++)
+            {
+                TalentTreeLevels[index].SetModel(model.TalentTreeLevels[index]);
+            }
+            TalentTreeButton.SetModel(model.TalentTreeButton);
+
+            model.ShowTalentTreeContentEvent.Subscribe(contents =>
+            {
+                UIViewTalentTreePopUp.SetModel(contents);
+                UIViewTalentTreePopUp.In();
+            }).AddTo(disposables);
+            
+            model.ShowUIViewSkillInfoPopUpEvent.Subscribe(contents =>
+            {
+                UIViewSkillInfoPopUp.SetModel(contents);
+                UIViewSkillInfoPopUp.In();
+            }).AddTo(disposables);
+            
+            model.CloseSkillInfoPopUp.Subscribe(_ =>
+            {
+                UIViewSkillInfoPopUp.Out();
             }).AddTo(disposables);
         }
 
@@ -80,13 +116,13 @@ namespace MobaPrototype.UIViewImplementation
 
         private void UpdateMana()
         {
-            Mana.text = $"{Model.Mana}/{Model.MaxMana}";
+            Mana.text = $"{Mathf.CeilToInt(Model.Mana.Value)}/{Model.MaxMana}";
             ManaBar.fillAmount = Model.Mana.Value / Model.MaxMana.Value;
         }
 
         private void UpdateHp()
         {
-            Hp.text = $"{Model.Hp}/{Model.MaxHp}";
+            Hp.text = $"{Mathf.CeilToInt(Model.Hp.Value)}/{Model.MaxHp}";
             HpBar.fillAmount = Model.Hp.Value / Model.MaxHp.Value;
         }
     }

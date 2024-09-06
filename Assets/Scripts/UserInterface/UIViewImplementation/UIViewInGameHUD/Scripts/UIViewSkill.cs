@@ -21,6 +21,7 @@ namespace MobaPrototype.UIViewImplementation
             [field: SerializeField] public KeyCode HotKey { get; set; }
             [field: SerializeField] public ReactiveProperty<float> CoolDownTimeStamp { get; set; }
             [field: SerializeField] public ReactiveProperty<float> CoolDownTotalTime { get; set; }
+            [field: SerializeField] public ReactiveProperty<float> ManaCost { get; set; }
         }
 
         [field: SerializeField] private UIViewButton Button { get; set; }
@@ -29,6 +30,7 @@ namespace MobaPrototype.UIViewImplementation
         [field: SerializeField] private UIViewSkillLevelList SkillLevels { get; set; }
         [field: SerializeField] private Image CoolDownClock { get; set; }
         [field: SerializeField] private TextMeshProUGUI CoolDownText { get; set; }
+        [field: SerializeField] private TextMeshProUGUI ManaCost { get; set; }
         
         protected override void OnSetModel(UIModel model)
         {
@@ -43,6 +45,10 @@ namespace MobaPrototype.UIViewImplementation
                 }).AddTo(disposables);
             }
             HotKey.text = model.HotKey.ToString();
+            model.ManaCost.Subscribe(val =>
+            {
+                ManaCost.text = Mathf.CeilToInt(val).ToString();
+            });
         }
 
         private void Update()

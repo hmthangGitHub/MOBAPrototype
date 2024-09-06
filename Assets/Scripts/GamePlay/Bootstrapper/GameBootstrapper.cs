@@ -28,6 +28,8 @@ namespace MobaPrototype.Scope
             builder.Register<ConfigSkillEffectContainer>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             builder.Register<ConfigSkillLevelContainer>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
             builder.Register<ConfigSkillEffectLevelContainer>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
+            builder.Register<ConfigTalentTreeContainer>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
+            builder.Register<ConfigTalentTreeEffectContainer>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
         }
 
         private static string GetContainerDataPath<TContainer>() where TContainer : IConfigContainer

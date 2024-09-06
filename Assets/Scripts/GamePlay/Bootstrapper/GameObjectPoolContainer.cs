@@ -17,14 +17,16 @@ namespace MobaPrototype.Scope
     public class GameObjectPoolContainer : ICustomPostAsyncStart, IDisposable
     {
         private readonly ConfigSkillContainer configSkillContainer;
+        private readonly ConfigTalentTreeEffectContainer configTalentTreeEffectContainer;
         private readonly Dictionary<string, IObjectPool<GameObjectEventPool>> gameObjectPools = new();
 
         private CompositeDisposable compositeDisposable = new();
 
         [Inject]
-        public GameObjectPoolContainer(ConfigSkillContainer configSkillContainer)
+        public GameObjectPoolContainer(ConfigSkillContainer configSkillContainer, ConfigTalentTreeEffectContainer configTalentTreeEffectContainer)
         {
             this.configSkillContainer = configSkillContainer;
+            this.configTalentTreeEffectContainer = configTalentTreeEffectContainer;
         }
 
         public async UniTask PostStartAsync(CancellationToken cancellation = default)
@@ -32,10 +34,20 @@ namespace MobaPrototype.Scope
             var allSkillEntityPath = configSkillContainer
                 .ConfigList
                 .Select(x => x.SkillPrefabPath)
-                .Where(x => !string.IsNullOrEmpty(x)).Distinct()
+                .Where(x => !string.IsNullOrEmpty(x))
+                .Distinct()
+                .ToArray();
+            
+            var allReplaceSkillEntityPath = configTalentTreeEffectContainer
+                .ConfigList
+                .Where(x => x.TalentTreeEffectType == TalentTreeEffectType.ChangeSkillEntity)
+                .Select(x => x.StringValue)
+                .Where(x => !string.IsNullOrEmpty(x))
+                .Distinct()
                 .ToArray();
 
             await InitializeGameObjectPoolsAsync(cancellation, allSkillEntityPath);
+            await InitializeGameObjectPoolsAsync(cancellation, allReplaceSkillEntityPath);
             PrewarmGameObjectPool(5);
         }
 

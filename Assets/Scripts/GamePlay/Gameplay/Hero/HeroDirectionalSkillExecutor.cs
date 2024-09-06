@@ -10,6 +10,8 @@ namespace MobaPrototype.Hero
     public class HeroDirectionalSkillExecutor : HeroSkillExecutorBase
     {
         private IDisposable castingDirectionDisposable;
+        private Vector3[] projectileDirections;
+
         protected override float GetPreviewRange(SkillModel skillModel)
         {
             return skillModel.CastRange.Value * 2.0f;
@@ -17,9 +19,11 @@ namespace MobaPrototype.Hero
         
         public override void Preview(int skillIndex)
         {
+            base.Preview(skillIndex);
             if (!ValidateSkillIndex(skillIndex)) return;
             var skillModel = heroEntityModel.SkillModels[skillIndex];
             rangeSkillPreviewer.Range = skillModel.CastRange.Value;
+            rangeSkillPreviewer.NumberOfProjectile = skillModel.NumberProjectTile.Value;
             rangeSkillPreviewer.Enable = true;
             aoeSkillPreviewer.Enable = true;
             aoeSkillPreviewer.Aoe = GetPreviewRange(skillModel);
@@ -30,25 +34,30 @@ namespace MobaPrototype.Hero
                 .Take(1)
                 .Subscribe(direction =>
                 {
+                    projectileDirections = direction.projectTileDirection;
                     ExitPreview();
-                    RotateToTargetAndExecuteSkillIndex(skillIndex, direction);
+                    RotateToTargetAndExecuteSkillIndex(skillIndex, direction.heroDirection);
                 }).AddTo(disposables);
         }
         
         protected override void OnExecute(SkillModel skillModel)
         {
             base.OnExecute(skillModel);
-            var skillEntity = gameObjectPoolContainer.GetObject<DirectionalSkillEntity>(skillModel.ConfigSkill.SkillPrefabPath);
-            skillEntity.SetModel(new ()
+
+            foreach (var projectileDirection in projectileDirections)
             {
-                SkillEntityModel = new()
+                var skillEntity = gameObjectPoolContainer.GetObject<DirectionalSkillEntity>(skillModel.SkillEntityPath);
+                skillEntity.SetModel(new ()
                 {
-                    SkillEffectModels = skillModel.SkillEffectModels.Values.ToArray()
-                },
-                Direction = HeroController.transform.forward,
-                Range = skillModel.CastRange.Value / 100.0f,
-                Position = HeroController.transform.position
-            });
+                    SkillEntityModel = new()
+                    {
+                        SkillEffectModels = skillModel.AllSkillEffectModels
+                    },
+                    Direction = projectileDirection,
+                    Range = skillModel.CastRange.Value / 100.0f,
+                    Position = HeroController.transform.position
+                });
+            }
         }
     }
 }

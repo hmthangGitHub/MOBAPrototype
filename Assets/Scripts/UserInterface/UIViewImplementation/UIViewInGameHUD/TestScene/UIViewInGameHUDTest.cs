@@ -17,6 +17,9 @@ namespace MobaPrototype.UIViewImplementation.Test
         
         [SerializeField] private UIViewSkill.UIModel[] skills;
         [SerializeField] private UIViewSkillLevelTest[] skillLevels;
+        [SerializeField] private UIViewTalentTreePopUpContent.UIModel[] talentTreePopUpContents;
+        [SerializeField] private UIViewSkillInfoPopUp.UIModel skillInFoPopUp;
+        [SerializeField] private UIViewSkillEffect.UIModel[] skillEffectTypes;
 
         protected override void OnSetTestModel()
         {
@@ -45,6 +48,17 @@ namespace MobaPrototype.UIViewImplementation.Test
             if (GUILayout.Button("Show on cd notification"))
             {
                 uiModel.ShowCoolDownEvent.OnNext(default);
+            }
+            
+            if (GUILayout.Button("Show talent tree popup"))
+            {
+                uiModel.ShowTalentTreeContentEvent.OnNext(talentTreePopUpContents.ToReactiveCollection());
+            }
+            
+            if (GUILayout.Button("Show skill info popup"))
+            {
+                skillInFoPopUp.EffectList = skillEffectTypes.ToReactiveCollection();
+                uiModel.ShowUIViewSkillInfoPopUpEvent.OnNext(skillInFoPopUp);
             }
         }
     }
